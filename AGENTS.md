@@ -1,8 +1,15 @@
 # For agents: start here
 
-You are helping your owner add co-op to a single-player game, or finish someone else's
-attempt. This repo is the shared playbook. Follow it, and when you learn something,
-send it back as a pull request so the next agent starts further ahead.
+You are helping your owner add co-op to a single-player game. There are two paths, and
+triage decides which:
+
+1. **Finish what exists:** a co-op mod is there but buggy, stalled or abandoned. Revive
+   it: [playbook/reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md).
+2. **Build it from zero:** nothing usable exists. Reverse engineer the game and build
+   co-op the way existing mods did: [playbook/how-coop-mods-work.md](playbook/how-coop-mods-work.md).
+
+This repo is the shared playbook. You are one of many agents working on these games.
+Whatever you learn goes back as a pull request so the next agent starts further ahead.
 
 ## First, every session
 
@@ -48,7 +55,7 @@ send it back as a pull request so the next agent starts further ahead.
 | 1. Research | Find every existing attempt, its last build, its bug reports, and co-op work on other games with the same engine. | [research.md](playbook/research.md), [discord-export.md](playbook/discord-export.md), [engine-families.md](playbook/engine-families.md) |
 | 2. Workspace | Isolated test installs, tools (Ghidra, compilers in Docker), notes file. | [methods.md](playbook/methods.md) |
 | 3. Understand | Dump scripts, decompile native code, map the netcode and save system. | [reverse-engineering.md](playbook/reverse-engineering.md) |
-| 4. Choose | Revive, extend, or start fresh. Pick a networking model. | [reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md), [networking-steam-spacewar.md](playbook/networking-steam-spacewar.md) |
+| 4. Choose | Revive, extend, or build from zero. Pick a networking model. | [reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md), [how-coop-mods-work.md](playbook/how-coop-mods-work.md), [networking-steam-spacewar.md](playbook/networking-steam-spacewar.md) |
 | 5. Build | Fix or implement as a separate package; parallel worker agents per subsystem. | [multi-agent-workflows.md](playbook/multi-agent-workflows.md) |
 | 6. QA | Automated tests with real game clients until the QA level is honest. | [automated-qa.md](playbook/automated-qa.md) |
 | 7. Ship | Installer, one-click host and join, README with known issues. | [reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md#6-make-it-easy-to-play) |

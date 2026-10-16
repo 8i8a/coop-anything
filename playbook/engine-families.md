@@ -17,7 +17,7 @@ sources; this page is about what carries over.
 | **id Tech 2 to 4** | Quake, Quake II, Doom 3 (OpenCoop, LibreCoop on dhewm3), Quake 4 | Open source releases (id Tech up to 4) and source ports (dhewm3) put co-op in reach. |
 | **CryEngine** | Far Cry (Assault Coop), Crysis (two projects), Prey 2017, Kingdom Come Deliverance 1 and 2 | Mod SDKs and Lua game logic. |
 | **RE Engine** | Resident Evil 2, 4 remakes, Dragon's Dogma 2 | Shared tooling (REFramework) across the family; RE Village is still a gap. |
-| **FromSoftware** | Elden Ring, Dark Souls Remastered, Dark Souls III, Nightreign (Seamless Co-op), Sekiro | Seamless Co-op shows the pattern: extend the game's own online summoning rather than build netcode. |
+| **FromSoftware** | Elden Ring, Dark Souls Remastered, Dark Souls III, Nightreign (Seamless Co-op), Sekiro | Seamless Co-op covers several games of the family; its internals are not public, see [how co-op mods work](how-coop-mods-work.md). |
 | **Unity / XNA** | Subnautica (Nitrox), Hollow Knight (HKMP), Outer Wilds (QSB), Celeste (CelesteNet) | C# mod loaders (BepInEx, MelonLoader, Everest) make Unity games the easiest modern targets. |
 
 ## Rebuilt engines and decompilations

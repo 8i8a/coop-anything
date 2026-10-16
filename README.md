@@ -1,82 +1,155 @@
-# coop-anything
+<h1 align="center">Co-op Anything</h1>
 
-**Crowd-sourcing co-op for every single-player classic, one AI agent at a time.**
+<p align="center"><b>Any single-player game. Your friends. Your agent does the work.</b></p>
 
-Most loved single-player games already have a co-op attempt somewhere: an alpha from
-2019, a Discord full of bug reports, a fork that synced the bosses but not the
-cutscenes. They are *so close*. What's missing is the boring last 20%: fixing the bugs,
-testing every level, making it easy to install.
+<p align="center">
+<a href="https://ko-fi.com/cranebeaker"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"></a>
+</p>
 
-That last 20% is exactly what coding agents are good at, if they know where to look.
-This repo is the shared playbook and the shared map:
+<p align="center">
+<a href="#quick-start">Quick start</a> ·
+<a href="#how-it-works">How it works</a> ·
+<a href="#what-you-can-co-op">What you can co-op</a> ·
+<a href="#games-so-far">Games so far</a> ·
+<a href="#everyone-is-a-contributor">Contribute</a> ·
+<a href="#faq">FAQ</a> ·
+<a href="#documentation">Docs</a>
+</p>
 
-- **[AGENTS.md](AGENTS.md)**: instructions written *for your AI agent* (Claude Code,
-  Codex, Gemini CLI, Cursor, anything). Point it at this repo and a game you own, and it
-  follows the same playbook: research what exists, set up a safe test copy, reverse
-  engineer, fix, **test with bots**, ship.
-- **[DIRECTORY.md](DIRECTORY.md)**: every co-op mod, fork and port we know of for
-  single-player games, with what it really syncs and how well it's been tested. Plus the
-  open gaps.
-- **[playbook/](playbook/)**: the techniques that worked, from real projects: finding
-  abandoned mods, mining a mod's Discord for bugs, decompiling with Ghidra, reusing
-  co-op work from games on the same engine, Steam relay networking without port
-  forwarding, and automated QA with real game clients.
+Want to play a single-player game with your friends? Point your AI coding agent at this
+repo. It researches what exists, reverse engineers the game and its engine if it has to,
+builds or fixes the co-op, **tests it with bots inside the game**, and packages it so your
+friends install it in one click and join over Steam without port forwarding.
 
-Inspired by the way [photo-frame-dashboard](https://github.com/wesbos/photo-frame-dashboard)
-turned owners' agents into contributors: everyone's agent does the work on their own
-machine and sends the notes back as a pull request, so the next person starts further
-ahead.
+The sky is the limit. Every game that runs on your PC is a candidate.
 
-[![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cranebeaker)
+## Quick start
 
-## Use it
+```
+git clone https://github.com/cranebeaker/coop-anything
+```
 
-1. Own the game. Install it normally.
-2. Clone this repo and open it with your coding agent.
-3. Tell it something like: *"Read AGENTS.md. I want to play Vampire: Bloodlines in
-   co-op. Start with triage and research, and ask me before installing anything."*
-4. When it learns something, it updates the directory and writes up the game in
-   `games/`. You check the diff and open a pull request.
+Open the folder with your agent (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, ...) and say:
 
-You don't need to finish a whole game. A corrected directory entry, a bug list mined
-from a mod's Discord, or one new test is a useful PR.
+```
+Read AGENTS.md. I want to play <game> in co-op with my friends.
+Ask me before installing anything.
+```
 
-## The QA flag is the point
+The agent follows [AGENTS.md](AGENTS.md) and the skills in [`.agents/skills`](.agents/skills)
+(also in `.claude/skills` for Claude Code).
 
-Anyone can claim a mod "works". Here every entry carries a **QA level**:
+### Add the MCP server
 
-| QA | Meaning |
-|---|---|
-| untested | only the author's claims |
-| player reports | people say they played it |
-| **automated tests** | a script drove real game clients and checked shared state |
-| **verified playthrough** | someone finished the campaign in co-op and wrote it up |
+The **Co-op Anything MCP** lets any agent search the co-op directory, detect a game's engine
+from its install folder, read the playbook and skills, and validate contributions.
+Claude Code picks it up from this repo's `.mcp.json`; for other agents:
 
-The playbook's rule is that agents prove things with bots inside the game, not by asking
-you to playtest. See [playbook/automated-qa.md](playbook/automated-qa.md).
+```
+claude mcp add coop-anything -- python <clone>/tools/mcp/coop_mcp.py
+```
 
-## Games worked on with this playbook so far
+Codex, Gemini CLI and Cursor setup: [playbook/mcp.md](playbook/mcp.md). For the binary work,
+pair it with a reverse-engineering MCP such as [REA](https://github.com/morluto/rea)
+(`npx rea-agents setup`): Co-op Anything knows what to do, REA looks inside the game.
 
-| Game | What was done | Write-up |
+## How it works
+
+Your agent takes one of two paths.
+
+| | Path 1: finish what exists | Path 2: build it from zero |
 |---|---|---|
-| Deus Ex (2000) | Revived the HX co-op mod: fix package, Steam relay, automated test suite | [games/deus-ex](games/deus-ex/README.md) |
-| Dungeon Keeper (1997) | Shared-keeper co-op on KeeperFX, Steam relay networking | [games/dungeon-keeper](games/dungeon-keeper/README.md) |
-| S.T.A.L.K.E.R. Shadow of Chernobyl / Clear Sky | Fix patch for Shadow of COOP, plan to finish Clear COOP | [games/stalker](games/stalker/README.md) |
-| Fallout: New Vegas | Quest sync layer on top of NV:MP, in progress | [games/fallout-new-vegas](games/fallout-new-vegas/README.md) |
-| Zelda: Ocarina of Time | Fixes for a fully synced Ship of Harkinian co-op fork | [games/ocarina-of-time](games/ocarina-of-time/README.md) |
+| When | A co-op mod exists but is buggy, stalled or abandoned. Most loved games are here. | Nothing usable exists. |
+| How | Find the last build, mine its bug reports (issues, forums, Discord), audit the code, fix it as a separate package, test, ship. | Reverse engineer the game and engine, hook in, show the second player, sync enemies, world and story, handle level changes and saves, test, ship. |
+| Skills | `coop-research`, `coop-revive`, `coop-qa` | `coop-reverse-engineer`, `coop-build-from-zero`, `coop-networking`, `coop-qa` |
+| Guide | [Reviving abandoned mods](playbook/reviving-abandoned-mods.md) | [How co-op mods work](playbook/how-coop-mods-work.md) |
 
-Add yours.
+Both paths end the same way: automated tests with real game clients
+([QA](playbook/automated-qa.md)), easy install, Steam relay networking
+([networking](playbook/networking.md)), and a pull request back here.
+
+## What you can co-op
+
+| Your game is... | Typical approach | Tools your agent uses |
+|---|---|---|
+| On an engine with multiplayer already (Unreal 1/2, Source, id Tech, X-Ray) | Make the single-player logic run on the existing netcode with script mods | Script source, SDK compilers, mod packages |
+| Bethesda (Gamebryo, Creation) | Script extender plugin, host-authority sync, reuse Tilted Online style designs | SKSE / F4SE / xNVSE, Ghidra, REA |
+| Unity | Harmony patches through a mod loader, a networking library in C# | BepInEx, MelonLoader, dnSpyEx, Il2CppDumper |
+| Unreal Engine 4/5 | Lua or C++ mods with an SDK dump of the game's classes | UE4SS, Dumper-7 |
+| RE Engine, FromSoftware, other proprietary | DLL hooks; extend the game's own online features where they exist | REFramework, MinHook, Ghidra, REA, x64dbg |
+| Decompiled or open source (N64 decomps, KeeperFX, OpenMW, source ports) | Add networking directly in the code | A compiler, the decomp, Docker cross builds |
+| Closed binary, nothing else | Full reverse engineering of state, saves and levels; the hardest path | REA, GhidraMCP, ida-pro-mcp, Frida, Cheat Engine |
+
+Full tool list with install notes: [playbook/tools.md](playbook/tools.md).
+Which engine has co-op work you can reuse: [playbook/engine-families.md](playbook/engine-families.md).
+
+## Games so far
+
+| Game | What was done | Release | Write-up |
+|---|---|---|---|
+| Deus Ex (2000) | Revived the HX co-op mod: fix package, Steam relay, automated test suite | [deus-ex-coop](https://github.com/cranebeaker/deus-ex-coop) | [games/deus-ex](games/deus-ex/README.md) |
+| Dungeon Keeper (1997) | Shared-keeper co-op on KeeperFX, Steam relay networking | coming soon | [games/dungeon-keeper](games/dungeon-keeper/README.md) |
+| S.T.A.L.K.E.R. Shadow of Chernobyl / Clear Sky | Fix patch for Shadow of COOP, finishing Clear COOP | coming soon | [games/stalker](games/stalker/README.md) |
+| Fallout: New Vegas | Quest sync layer on top of NV:MP | in progress | [games/fallout-new-vegas](games/fallout-new-vegas/README.md) |
+| Zelda: Ocarina of Time | Fixes for a fully synced Ship of Harkinian co-op fork | in progress | [games/ocarina-of-time](games/ocarina-of-time/README.md) |
+
+Plus a [directory of 230+ co-op mods and gaps](DIRECTORY.md) for other games, each with
+what it really syncs and how well it was tested.
+
+## Everyone is a contributor
+
+Every agent that works on a game sends what it learned back as a pull request: a fix, a
+bug list, a test, a failed attempt, a corrected directory entry. One person's agent gets a
+game halfway; the next one starts from there. Pooled together, that's enough compute to get
+even the biggest games over the line.
+
+- Your agent opens the PR as a draft; you review the diff and publish it.
+- Each game gets its own release repo, linked from [Games so far](#games-so-far).
+- The **QA level** on every entry says how it was proven: untested, player reports,
+  automated tests (bots drove real game clients) or verified playthrough.
+
+[CONTRIBUTING.md](CONTRIBUTING.md) has the details.
+
+## FAQ
+
+<details><summary>Do I need to know how to code?</summary>
+No. You need the game, a coding agent and some patience. The agent asks before installing
+anything or using your accounts.
+</details>
+
+<details><summary>Does my friend need to buy anything?</summary>
+Everyone needs their own copy of the game. The Steam relay uses Valve's free Spacewar test
+app, so nobody buys anything else.
+</details>
+
+<details><summary>Is this legal?</summary>
+Modding games you own for co-op with friends is what the modding community has always done.
+This repo never contains game files, cracks or decompiled source of closed games, and it
+does not touch anti-cheat or online services. See the rules below.
+</details>
+
+<details><summary>Will it work for my game?</summary>
+Check the <a href="DIRECTORY.md">directory</a> first. If a mod exists, path 1 is usually
+weeks of agent work, not months. If nothing exists, path 2 depends on the engine; the table
+above gives a feel for it.
+</details>
+
+## Documentation
+
+- [AGENTS.md](AGENTS.md): rules and phase map for agents · [MCP server](playbook/mcp.md) · [skills](.agents/skills)
+- Playbook: [triage](playbook/triage.md) · [research](playbook/research.md) ·
+  [Discord bug mining](playbook/discord-export.md) · [reverse engineering](playbook/reverse-engineering.md) ·
+  [tools](playbook/tools.md) · [how co-op mods work](playbook/how-coop-mods-work.md) ·
+  [engine families](playbook/engine-families.md) · [reviving mods](playbook/reviving-abandoned-mods.md) ·
+  [networking](playbook/networking.md) · [Steam Spacewar relay](playbook/networking-steam-spacewar.md) ·
+  [automated QA](playbook/automated-qa.md) · [multi-agent workflows](playbook/multi-agent-workflows.md) ·
+  [methods](playbook/methods.md) · [lessons](playbook/lessons.md)
+- [DIRECTORY.md](DIRECTORY.md) and its [schema](data/SCHEMA.md)
 
 ## Rules
 
-- You must own the games. No game files, cracks or decompiled closed source in this repo.
-- No personal info in PRs. No tokens, no private Discord content beyond bug summaries.
-- Credit the people whose mods you build on, and give fixes back to their projects.
-- Single-player and co-op only: nothing that cheats in other people's multiplayer games.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). The directory is generated from
-`data/directory.yaml` by `tools/build_directory.py`, and CI checks every PR.
+Own the games. No game files, cracks or decompiled closed source in this repo. No
+personal info. Credit the mods you build on and give fixes back to them. Co-op only:
+nothing that cheats in other people's multiplayer games or touches anti-cheat.
 
 License: MIT.

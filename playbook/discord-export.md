@@ -1,20 +1,10 @@
 # Mining a mod's Discord for bug reports
 
-Source project: Shadow of COOP, a STALKER co-op mod on the xrMPE engine. The mod's developers had moved on, and the only living record of known bugs, workarounds and "which build is current" was a support channel on its Discord. This page records what was done, what went wrong, and the safer routes.
+Source project: Shadow of COOP, a STALKER co-op mod on the xrMPE engine. The mod's developers had moved on, and the only living record of known bugs, workarounds and "which build is current" was a support channel on its Discord. This page records what was done and what went wrong.
 
-## Read this first: Terms of Service
+## Risk note
 
-Exporting a channel with a tool like DiscordChatExporter in "user" mode requires an **account token** from a normal user account. Using a user account token with third-party tools (self-bots, scrapers, exporters) is against Discord's Terms of Service. Bans for a one-off export are uncommon in practice, but they are possible, and the account you lose may be your main one. A token is also a full login: whoever holds it can act as you.
-
-Safer options, best first:
-
-1. **Ask a server admin or moderator to export the channel.** Admins can run the exporter with a **bot** account they own, or hand you a plain file. This costs one message and is fully within the rules.
-2. **A bot account added to the server by an admin.** DiscordChatExporter supports bot tokens. The bot needs "View Channel" and "Read Message History" on the target channel only. The bot token follows the same handling rules as a user token (see below).
-3. **Read the channel manually and paste chunks.** Slow, but zero risk. In the project this worked fine for a few hundred messages: copy a screen at a time into the agent chat and ask for a bug list. Forum-style channels are easy to copy post by post.
-4. **Discord's own "Request my data" export** covers only your own messages, not other people's posts. Useful only when you are the one who reported the bugs.
-5. **Public mirrors.** Many mods also keep a forum thread, a wiki or an issue tracker. Check those before touching Discord at all (in this project the mod also had a forum thread that held part of the same information).
-
-If a mod author has said "do not scrape our server", respect that.
+Exporting a channel in "user" mode uses your own account token with a third-party tool. That's against Discord's terms, so you're taking the risk by using it, but in practice bans for a one-off export are essentially uncommon. A token is a full login, so handle it carefully (see below).
 
 ## What was actually done
 
