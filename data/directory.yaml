@@ -549,6 +549,31 @@
   - https://steamcommunity.com/app/4500/discussions/0/4326349159969780968/
   - https://github.com/M4dMurloc/xrMPE_Launcher_Release
   checked: '2026-10-16'
+- game: 'S.T.A.L.K.E.R.: Shadow of Chernobyl'
+  year: 2007
+  engine: X-Ray (xrMPE)
+  project: Shadow of COOP fixes (stalker-soc-coop-fixes)
+  url: https://github.com/cranebeaker/stalker-soc-coop-fixes
+  other_urls: []
+  kind: mod
+  status: playable
+  coop_scope:
+    story: 'yes'
+    enemies: 'yes'
+    world_state: partial
+    items: unknown
+  players: '4'
+  networking: steam-relay
+  open_source: partial
+  last_activity: 2026-10
+  qa: automated
+  notes: Unofficial fix patch on top of Shadow of COOP 8.0 (an extra .db appended to coop.addon). Fixes crashes and
+    stuck quests and unlocks the true ending. All 18 levels boot-tested on a dedicated server and an in-engine self-test
+    passes 20 of 20; no scripted full story run or automated two-client run yet. Tools MIT; patched files remain
+    Shadow of COOP / GSC files.
+  sources:
+  - https://github.com/cranebeaker/stalker-soc-coop-fixes
+  checked: '2026-10-16'
 - game: 'S.T.A.L.K.E.R.: Clear Sky'
   year: 2008
   engine: X-Ray (xrMPE)

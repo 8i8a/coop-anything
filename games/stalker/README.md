@@ -3,16 +3,18 @@
 | | |
 |---|---|
 | Engine | X-Ray (Shadow of COOP runs on the xrMPE multiplayer extension, Call of Pripyat based) |
-| Projects | Shadow of COOP 8.0 (Arcanum Team, xrMPE addon); Clear COOP 0.5 (abandoned Nov 2024) |
-| QA level | community-reports (Shadow of COOP); none (Clear COOP) |
+| Projects | Shadow of COOP 8.0 (Arcanum Team, xrMPE addon) + our fix patch [stalker-soc-coop-fixes](https://github.com/cranebeaker/stalker-soc-coop-fixes); Clear COOP 0.5 (abandoned Nov 2024) |
+| QA level | automated (fix patch: boot test + in-engine self-test); none (Clear COOP) |
 | Last updated | 2026-10-16 |
 
 ## Where things stand
 
 - **Shadow of Chernobyl:** Shadow of COOP is playable through the story. A fix patch
   (an extra `.db` archive appended to the addon) fixes an endgame crash and other bugs.
+  Release: [stalker-soc-coop-fixes](https://github.com/cranebeaker/stalker-soc-coop-fixes/releases).
 - **Clear Sky:** Clear COOP 0.5 ships 8 levels and the story was playable only to
-  Agroprom. A plan exists to port it to xrMPE 0.9 and add the missing levels.
+  Agroprom. A port to xrMPE 0.9 with the missing levels and the rest of the story is being
+  built and boot-tested now.
 
 ## How the game works (for co-op)
 

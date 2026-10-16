@@ -96,7 +96,7 @@ Which engine has co-op work you can reuse: [playbook/engine-families.md](playboo
 |---|---|---|---|
 | Deus Ex (2000) | Revived the HX co-op mod: fix package, Steam relay, automated test suite | [deus-ex-coop](https://github.com/cranebeaker/deus-ex-coop) | [games/deus-ex](games/deus-ex/README.md) |
 | Dungeon Keeper (1997) | Shared-keeper co-op on KeeperFX, Steam relay networking | coming soon | [games/dungeon-keeper](games/dungeon-keeper/README.md) |
-| S.T.A.L.K.E.R. Shadow of Chernobyl / Clear Sky | Fix patch for Shadow of COOP, finishing Clear COOP | coming soon | [games/stalker](games/stalker/README.md) |
+| S.T.A.L.K.E.R. Shadow of Chernobyl / Clear Sky | Fix patch for Shadow of COOP (true ending unlocked); finishing Clear COOP in progress | [stalker-soc-coop-fixes](https://github.com/cranebeaker/stalker-soc-coop-fixes) (SoC); Clear Sky coming soon | [games/stalker](games/stalker/README.md) |
 | Fallout: New Vegas | Quest sync layer on top of NV:MP | in progress | [games/fallout-new-vegas](games/fallout-new-vegas/README.md) |
 | Zelda: Ocarina of Time | Fixes for a fully synced Ship of Harkinian co-op fork | in progress | [games/ocarina-of-time](games/ocarina-of-time/README.md) |
 
