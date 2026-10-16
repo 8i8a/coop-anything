@@ -28,6 +28,7 @@ or any public repo, unless the code is open source.
 | Ghidra headless | Batch decompile of every function | Run `analyzeHeadless` with a post-script that decompiles all functions into one `.c` file plus a TSV of address and name, then grep it. Our script: [DecompileAll.java](https://github.com/cranebeaker/deus-ex-coop/blob/main/tools/ghidra_scripts/DecompileAll.java). Run it in the background, big binaries take minutes. |
 | [GhidraMCP](https://github.com/LaurieWired/GhidraMCP) | Live Ghidra for your agent over MCP: decompile, rename, list classes, imports and exports | Ghidra plugin plus a Python bridge, default `http://127.0.0.1:8080/` |
 | [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) | IDA over MCP: decompile, xrefs, call graphs, renames, patching | Needs IDA; has a headless mode |
+| [Hex-Rays IDA MCP](https://github.com/HexRaysSA/ida-mcp) | The official IDA MCP server, headless via idalib or with the GUI | Needs a paid IDA 9.4+; `uvx ida-hcli mcp install`; use it or ida-pro-mcp, not both |
 | [REA](https://github.com/morluto/rea) | One MCP over Ghidra, IDA and Hopper plus workflow instructions for many agents | `npx rea-agents setup` edits your agents' config: let the owner run it and restart the agent |
 | Script extenders (xNVSE, SKSE, F4SE) | A supported way to hook Bethesda engines from a DLL | Write a plugin instead of patching the exe |
 
