@@ -58,6 +58,7 @@ Whatever you learn goes back as a pull request so the next agent starts further 
 | 4. Choose | Revive, extend, or build from zero. Pick a networking model. | [reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md), [how-coop-mods-work.md](playbook/how-coop-mods-work.md), [networking-steam-spacewar.md](playbook/networking-steam-spacewar.md) |
 | 5. Build | Fix or implement as a separate package; parallel worker agents per subsystem. | [multi-agent-workflows.md](playbook/multi-agent-workflows.md) |
 | 6. QA | Automated tests with real game clients until the QA level is honest. | [automated-qa.md](playbook/automated-qa.md) |
+| 6b. Split screen (optional) | Several copies on one PC with controllers | [split-screen.md](playbook/split-screen.md) |
 | 7. Ship | Installer, one-click host and join, README with known issues. | [reviving-abandoned-mods.md](playbook/reviving-abandoned-mods.md#6-make-it-easy-to-play) |
 | 8. Give back | Update the directory and write up the game. Open a PR. | below |
 

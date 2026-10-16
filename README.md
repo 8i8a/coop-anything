@@ -80,6 +80,9 @@ Both paths end the same way: automated tests with real game clients
 | Decompiled or open source (N64 decomps, KeeperFX, OpenMW, source ports) | Add networking directly in the code | A compiler, the decomp, Docker cross builds |
 | Closed binary, nothing else | Full reverse engineering of state, saves and levels; the hardest path | REA, GhidraMCP, ida-pro-mcp, Frida, Cheat Engine |
 
+Couch co-op on one PC? [Split screen](playbook/split-screen.md) builds on Nucleus Co-op
+(Windows) and PartyDeck (Linux and Steam Deck), both open source.
+
 Full tool list with install notes: [playbook/tools.md](playbook/tools.md).
 Which engine has co-op work you can reuse: [playbook/engine-families.md](playbook/engine-families.md).
 
@@ -142,6 +145,7 @@ above gives a feel for it.
   [tools](playbook/tools.md) · [how co-op mods work](playbook/how-coop-mods-work.md) ·
   [engine families](playbook/engine-families.md) · [reviving mods](playbook/reviving-abandoned-mods.md) ·
   [networking](playbook/networking.md) · [Steam Spacewar relay](playbook/networking-steam-spacewar.md) ·
+  [split screen](playbook/split-screen.md) ·
   [automated QA](playbook/automated-qa.md) · [multi-agent workflows](playbook/multi-agent-workflows.md) ·
   [methods](playbook/methods.md) · [lessons](playbook/lessons.md)
 - [DIRECTORY.md](DIRECTORY.md) and its [schema](data/SCHEMA.md)
