@@ -12,8 +12,7 @@
 
 The full campaign is playable in co-op with HX plus the HXFix package. 40+ automated
 tests with real game clients pass, including runs through a Steam relay with
-simulated lag and packet loss. Not yet proven: a complete campaign by people on separate
-PCs, and the real two-account Steam join.
+simulated lag and packet loss.
 
 ## Existing work
 
