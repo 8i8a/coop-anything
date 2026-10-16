@@ -136,8 +136,9 @@ does not touch anti-cheat or online services. See the rules below.
 </details>
 
 <details><summary>Will it work for my game?</summary>
-Check the <a href="DIRECTORY.md">directory</a> first. If a mod exists, path 1 is usually
-weeks of agent work, not months. If nothing exists, path 2 depends on the engine; the table
+Yes. Some games need more agent hours than others, but it's definitely possible. Check the
+<a href="DIRECTORY.md">directory</a> first: if a co-op mod already exists (path 1), most
+projects take days at most. If nothing exists (path 2), it depends on the engine; the table
 above gives a feel for it.
 </details>
 
