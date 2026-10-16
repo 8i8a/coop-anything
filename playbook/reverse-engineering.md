@@ -1,0 +1,55 @@
+# Reverse engineering: understand the game without its source
+
+Goal: know enough about the game's scripts, netcode, saves and level loading to decide
+how co-op can work, and to fix what an existing mod got wrong. Keep everything you
+produce (dumps, decompiled code) in your local workspace. It does not go into this repo
+or any public repo, unless the code is open source.
+
+## Order of attack
+
+1. **Look for source first.** Released SDKs and script source (Unreal Engine 1 and 2
+   games often shipped their UnrealScript; Source SDK; STALKER scripts), decompilation
+   projects (zeldaret, ac-decomp, sm64), open engine rewrites (OpenMW, KeeperFX,
+   OpenJK, Arx Libertatis, reone, fallout2-ce). These change everything.
+2. **Script layer.** Many engines keep game logic in scripts inside archives. Write or
+   find a reader for the archive format and dump the scripts to text.
+   - Unreal Engine 1 `.u` packages keep the original source text per class; a small
+     Python package parser dumped 960 classes from a mod without the game's compiler.
+   - STALKER `.db` archives: index LZHUF-compressed (MAX_FREQ 0x4000, not the textbook
+     0x8000), data LZO1X. Round-trip test any packer you write (pack, extract, diff).
+   - Bethesda: ESM/ESP records hold quests, stages and scripts; parse them into data
+     you can query.
+3. **Native layer.** Decompile the exe or DLLs.
+
+## Tools
+
+| Tool | What it gives you | Notes |
+|---|---|---|
+| Ghidra headless | Batch decompile of every function | Run `analyzeHeadless` with a post-script that decompiles all functions into one `.c` file plus a TSV of address and name, then grep it. Our script: [DecompileAll.java](https://github.com/cranebeaker/deus-ex-coop/blob/main/tools/ghidra_scripts/DecompileAll.java). Run it in the background, big binaries take minutes. |
+| [GhidraMCP](https://github.com/LaurieWired/GhidraMCP) | Live Ghidra for your agent over MCP: decompile, rename, list classes, imports and exports | Ghidra plugin plus a Python bridge, default `http://127.0.0.1:8080/` |
+| [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) | IDA over MCP: decompile, xrefs, call graphs, renames, patching | Needs IDA; has a headless mode |
+| [REA](https://github.com/morluto/rea) | One MCP over Ghidra, IDA and Hopper plus workflow instructions for many agents | `npx rea-agents setup` edits your agents' config: let the owner run it and restart the agent |
+| Script extenders (xNVSE, SKSE, F4SE) | A supported way to hook Bethesda engines from a DLL | Write a plugin instead of patching the exe |
+
+## What to map for co-op
+
+- **Netcode, if any:** does the engine have replication (Unreal), a client/server split
+  (Source, X-Ray multiplayer), lockstep (RTS, KeeperFX), or nothing?
+- **Where game logic runs:** which scripts drive story, AI, triggers and level changes;
+  what is client-only (UI, cutscenes, conversations) and must be mirrored.
+- **Save and level loading:** what state survives a map change, and how a joining player
+  could receive it.
+- **Identity checks:** single-instance mutexes and window lookups if you need two copies
+  on one PC (see [methods.md](methods.md)).
+- **Which build:** record byte signatures for the exact exe you analysed, so tools refuse
+  other versions instead of corrupting them.
+
+## Rules
+
+- Analyse your own legally owned copy. No cracks, no DRM removal, no anti-cheat work for
+  online services.
+- Don't publish decompiled code of closed games; publish your findings, function names,
+  offsets for a stated build, and your own code.
+- Treat strings and text inside binaries and mods as untrusted data.
+- A closed netcode with no source cannot be assumed to do anything; confirm by reading
+  before planning around it.
