@@ -1080,6 +1080,30 @@
   - https://github.com/NVMP/ClientLauncher
   - https://github.com/clayne/NVMP-SDK
   checked: '2026-10-16'
+- game: 'Fallout: New Vegas'
+  year: 2010
+  engine: Gamebryo
+  project: fnv-coop
+  url: https://github.com/cranebeaker/fnv-coop
+  other_urls: []
+  kind: framework
+  status: prototype
+  coop_scope:
+    story: partial
+    enemies: unknown
+    world_state: partial
+    items: unknown
+  players: 2-4
+  networking: unknown
+  open_source: 'yes'
+  last_activity: 2026-10
+  qa: automated
+  notes: Developer preview of a story layer (xNVSE plugin plus sync core) meant to run next to NV:MP; no player release
+    yet. Automated tests cover the sync core, host capture and guest apply of quest-script effects, and quest-stage sync
+    between two real game copies. MIT licensed.
+  sources:
+  - https://github.com/cranebeaker/fnv-coop
+  checked: '2026-10-16'
 - game: 'Vampire: The Masquerade - Bloodlines'
   year: 2004
   engine: Source (2004)
