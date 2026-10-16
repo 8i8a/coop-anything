@@ -5911,3 +5911,47 @@
   - https://github.com/alexsharoff/pcsx2-online
   - https://github.com/YungMoniCA1/pcsx2-netplay-reborn
   checked: 2026-10-16
+- game: Jak and Daxter
+  year: 2001
+  engine: OpenGOAL (PC reimplementation)
+  project: Teamruns (OpenGOAL mod)
+  url: https://www.dsogaming.com/news/the-unofficial-pc-port-of-jak-daxter-now-supports-online-and-local-multiplayer/
+  kind: mod
+  status: playable
+  coop_scope:
+    players_visible: yes
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: unknown
+  networking: unknown
+  open_source: unknown
+  last_activity: unknown
+  qa: community-reports
+  notes: Online and local multiplayer for Jak 1 on the OpenGOAL PC port, installed from the OpenGOAL launcher's Mods menu.
+  sources:
+  - https://www.dsogaming.com/news/the-unofficial-pc-port-of-jak-daxter-now-supports-online-and-local-multiplayer/
+  checked: '2026-10-16'
+- game: "The Legend of Zelda: Majora's Mask"
+  year: 2000
+  engine: 2 Ship 2 Harkinian (decomp PC port)
+  project: anchor-2s2h (Anchor for 2 Ship 2 Harkinian)
+  url: https://github.com/tjoaks/anchor-2s2h
+  kind: fork
+  status: prototype
+  coop_scope:
+    players_visible: unknown
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: unknown
+  networking: hosted-relay
+  open_source: yes
+  last_activity: unknown
+  qa: none
+  notes: Fork of the Anchor co-op layer from Ship of Harkinian for the Majora's Mask PC port; same seed required. Activity unverified.
+  sources:
+  - https://github.com/tjoaks/anchor-2s2h
+  checked: '2026-10-16'

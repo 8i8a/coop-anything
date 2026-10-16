@@ -78,7 +78,11 @@ Both paths end the same way: automated tests with real game clients
 | Unreal Engine 4/5 | Lua or C++ mods with an SDK dump of the game's classes | UE4SS, Dumper-7 |
 | RE Engine, FromSoftware, other proprietary | DLL hooks; extend the game's own online features where they exist | REFramework, MinHook, Ghidra, REA, x64dbg |
 | Decompiled or open source (N64 decomps, KeeperFX, OpenMW, source ports) | Add networking directly in the code | A compiler, the decomp, Docker cross builds |
+| Console only (PS1, PS2, N64, GameCube, Wii, GBA, ...) | Decomp or recompiled PC port first; else emulator netplay, or a memory-sync mod between two emulators | Decomps and recompilers (N64Recomp, XenonRecomp), PCSX2 PINE, Dolphin Memory Engine, BizHawk / mGBA Lua |
 | Closed binary, nothing else | Full reverse engineering of state, saves and levels; the hardest path | REA, GhidraMCP, ida-pro-mcp, Frida, Cheat Engine |
+
+Console games: [emulator co-op](playbook/console-emulators.md) and
+[decompiled or recompiled PC ports](playbook/decomp-and-recomp.md), the route Ocarina of Time co-op took.
 
 Couch co-op on one PC? [Split screen](playbook/split-screen.md) builds on Nucleus Co-op
 (Windows) and PartyDeck (Linux and Steam Deck), both open source.
@@ -146,7 +150,8 @@ above gives a feel for it.
   [tools](playbook/tools.md) · [how co-op mods work](playbook/how-coop-mods-work.md) ·
   [engine families](playbook/engine-families.md) · [reviving mods](playbook/reviving-abandoned-mods.md) ·
   [networking](playbook/networking.md) · [Steam Spacewar relay](playbook/networking-steam-spacewar.md) ·
-  [split screen](playbook/split-screen.md) ·
+  [split screen](playbook/split-screen.md) · [console emulators](playbook/console-emulators.md) ·
+  [decomp and recomp](playbook/decomp-and-recomp.md) ·
   [automated QA](playbook/automated-qa.md) · [multi-agent workflows](playbook/multi-agent-workflows.md) ·
   [methods](playbook/methods.md) · [lessons](playbook/lessons.md)
 - [DIRECTORY.md](DIRECTORY.md) and its [schema](data/SCHEMA.md)

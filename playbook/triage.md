@@ -35,4 +35,5 @@ Answer these in order and write the answers into `games/<slug>/NOTES.md`.
 | Decomp or open source port exists | Add host-authority networking in the code (the sm64coopdx model) |
 | Engine has MP plus script source | Make story logic network-aware with script mods |
 | Same-engine co-op framework exists | Port the framework (Skyrim Together style work for other Creation Engine games) |
+| Console game, no PC version | PC port from a decomp or recompilation if one exists, else emulator co-op: [decomp-and-recomp.md](decomp-and-recomp.md), [console-emulators.md](console-emulators.md) |
 | Closed binary, no MP, no scripting | Very hard. Find collaborators, start with research and a design doc |

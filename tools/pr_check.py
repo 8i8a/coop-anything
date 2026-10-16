@@ -48,7 +48,7 @@ PATTERNS = [
     ("look", r"(?i)discord(app)?\.(gg|com/invite)/", "Discord invite link"),
     ("look", r"(?i)\b(crack(ed)?|keygen|warez|torrent|no-?cd|drm[- ]?(free|remov|bypass)|anti-?cheat bypass)\b", "Piracy or DRM wording"),
     ("look", r"(?i)(ignore (all|any|previous) (instructions|rules)|you are (an? )?(ai|assistant|agent)\b|system prompt)", "Text aimed at AI agents"),
-    ("look", r"—", "Em dash (house style says no)"),
+    ("look", r"\u2014", "Em dash (house style says no)"),
 ]
 for level, pat, label in PATTERNS:
     hits = [l.strip()[:100] for l in added if re.search(pat, l)]
