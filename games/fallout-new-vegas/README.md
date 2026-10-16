@@ -35,7 +35,7 @@ developer preview with no player release or installer yet.
   kills = union), covered by a simulator and soak tests.
 - Effect capture: hooks record every world change a quest script makes on the host and a
   guest applies the transaction without re-running the script.
-- Quest-stage sync between two real game copies.
+- Host-to-client quest-stage sync over our own network channel in the real game.
 - Per-quest co-op rules for every story quest.
 - Two game copies on one PC for tests, with the single-instance checks neutralized inside
   our own process.
@@ -48,7 +48,7 @@ developer preview with no player release or installer yet.
   real game copies; world snapshots split into shared and per-player state are diffed.
 - Host capture and guest apply of quest-script effects in the real game, with matching
   snapshots.
-- Quest-stage sync from host to client between two real game copies.
+- Host-to-client quest-stage sync over our own network channel in the real game.
 - Run them with `python -I tools/test_all.py` in the fnv-coop repo; suites that need your
   own game install skip with a message.
 
