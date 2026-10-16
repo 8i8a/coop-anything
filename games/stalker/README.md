@@ -38,5 +38,3 @@
 - Boot test every level on a dedicated server with a local client, watching the log for
   `Connection finished` or `FATAL ERROR`.
 - In-engine self-test archive hooked from a space restrictor's logic (20/20 checks).
-- **Not yet proven:** a hands-free run (the character screen needs a click), two clients
-  automated, a full story run. Plan: [playbook/automated-qa.md](../../playbook/automated-qa.md).

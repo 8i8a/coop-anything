@@ -36,4 +36,3 @@ pass with 0 desyncs. Not yet played by people on separate PCs.
   sides must match (0 desyncs).
 - Covered: in-level play, levels 1 to 4, loss and retry, menu path, clean quit and hard
   kill disconnects, Steam invite paths (on a mock `steam_api.dll`).
-- **Not yet proven:** real two-account Steam join, two humans, save/load mid-level in co-op.

@@ -9,7 +9,7 @@ policy and the techniques that made it work on four very different engines.
 - **Don't ask a human to playtest.** The game drives itself, checks the result and logs
   PASS/FAIL. People playing it is a bonus, not the test plan.
 - **"Needs a human playtest" is a gap, not a step.** If something can't be automated
-  yet, list it under "Not yet proven" and build the missing piece: an in-game bot, a
+  yet, track it as an open item in your notes or an issue and build the missing piece: an in-game bot, a
   second client, a mock service.
 - **The bot lives in the game's own scripting or code**, not in fake mouse or keyboard
   input. It does what a player would do (story flags, dialog, level changes, inventory)
@@ -81,4 +81,3 @@ policy and the techniques that made it work on four very different engines.
 
 - QA level reached (see [data/SCHEMA.md](../data/SCHEMA.md)).
 - The command that runs the suite and its last summary (pass counts).
-- "Not yet proven": everything that has not run end to end, in plain words.

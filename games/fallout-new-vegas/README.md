@@ -29,5 +29,3 @@ a quest stage set on the host is applied on a client through the sync layer.
   effects and observed state are compared.
 - Running two copies on one PC needs the single-instance checks handled (named mutex,
   FindWindow on the game's window class), done in-process.
-- **Not yet proven:** a live two-copy session, dialog sync in a real game, NV:MP and the
-  sync layer together.

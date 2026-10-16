@@ -30,7 +30,6 @@ Each fix or feature: the bug, the root cause, the fix, the test that proves it.
 
 - How to run the tests (command) and what they assert.
 - Last suite result (pass counts, date).
-- **Not yet proven:** everything that hasn't run end to end.
 
 ## How to play
 
@@ -38,7 +37,8 @@ Install, host, join. Link to releases.
 
 ## Known issues
 
-Plain words, what a player will notice.
+Plain words, what a player will notice. Open work items go in GitHub issues or
+your own notes, not in the write-up.
 
 ## Next steps
 

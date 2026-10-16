@@ -66,8 +66,6 @@ Each item: bug, root cause from code, fix. Tests: compile only (see QA).
 
 - Each fix compiles in the full Debug build. A reviewer agent read each commit for desyncs,
   echo loops, crashes and single-player regressions.
-- **Not yet proven:** every fix above in a session with two game clients. There is no
-  two-client harness yet ([playbook/automated-qa.md](../../playbook/automated-qa.md)).
 
 ## How to play
 

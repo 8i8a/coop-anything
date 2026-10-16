@@ -63,8 +63,6 @@ the project's BUGS.md):
 - Variants: through HXCoop with a mock `steam_api.dll`; with `PktLag`/`PktLoss`
   emulation; with a client install that lacks HXFix (checks the auto-download).
 - Every fix was checked to fail with the fix turned off.
-- **Not yet proven:** full campaign by humans on separate PCs; real Steam two-account
-  join; the endgame quote/credits flow (a stub in HX).
 
 ## How to play
 

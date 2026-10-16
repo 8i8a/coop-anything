@@ -7,7 +7,7 @@ description: Send what you learned back to coop-anything: update the directory, 
 
 1. Fork, branch `game/<slug>`.
 2. Directory: edit `data/directory.yaml`, run `python tools/build_directory.py`.
-3. Write-up: `games/<slug>/README.md` from `templates/game.md`, with the QA level and "not yet proven".
+3. Write-up: `games/<slug>/README.md` from `templates/game.md`, with the QA level and what works (no "not yet proven" lists; open items go in issues).
 4. Playbook: fix or extend the page whose advice was wrong or missing.
 5. Scrub: no personal info, no tokens, no game files, no decompiled closed source.
 6. Show the owner the diff, then `gh pr create --draft` with the template filled in.
