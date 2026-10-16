@@ -4461,15 +4461,43 @@
     world_state: partial
     items: partial
   players: '2'
-  networking: unknown
+  networking: hosted-relay
   open_source: unknown
   last_activity: 2026-10
   qa: none
   notes: README calls it a host-authority co-op prototype that streams enemy state and kills from the host, validates
     client hits on the host, syncs time of day, and has an optional item exchange mode. Examples show a host and
-    one client; no releases and 3 stars at check time.
+    one client; no releases and 3 stars at check time. Connects through the public Anchor relay by default
+    (anchor.hm64.org:43383 in soh/soh/Network/Anchor/Anchor.cpp). Continued in ocarina-coop.
   sources:
   - https://github.com/fReEsPiRiT-Spiritsoft/Shipwright-Online
+  - https://github.com/cranebeaker/ocarina-coop
+  checked: 2026-10-16
+- game: 'The Legend of Zelda: Ocarina of Time'
+  year: 1998
+  engine: N64 decompilation port (Ship of Harkinian fork)
+  project: ocarina-coop
+  url: https://github.com/cranebeaker/ocarina-coop
+  other_urls:
+  - https://github.com/fReEsPiRiT-Spiritsoft/Shipwright-Online
+  kind: fork
+  status: prototype
+  coop_scope:
+    players_visible: true
+    story: partial
+    enemies: partial
+    world_state: partial
+    items: partial
+  players: unknown
+  networking: hosted-relay
+  open_source: unknown
+  last_activity: 2026-10
+  qa: none
+  notes: Fork of Shipwright-Online that fixes its listed co-op bugs (switch sync, cutscene softlocks, day and night,
+    water levels so far; bosses, enemies and later dungeons in progress). Fixes are checked by code review and
+    compilation only; no two-client session has run yet. No release yet.
+  sources:
+  - https://github.com/cranebeaker/ocarina-coop
   checked: 2026-10-16
 - game: 'The Legend of Zelda: Ocarina of Time'
   year: 1998
