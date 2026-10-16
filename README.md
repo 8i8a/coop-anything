@@ -29,15 +29,11 @@ Games being made co-op right now: **[Deus Ex](https://github.com/cranebeaker/deu
 
 ## Quick start
 
-```
-git clone https://github.com/cranebeaker/coop-anything
-```
-
-Open the folder with your agent (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, ...) and say:
+Tell your agent (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, ...):
 
 ```
-Read AGENTS.md. I want to play <game> in co-op with my friends.
-Ask me before installing anything.
+Read https://github.com/cranebeaker/coop-anything and follow AGENTS.md.
+I want to play <game> in co-op with my friends.
 ```
 
 The agent follows [AGENTS.md](AGENTS.md) and the skills in [`.agents/skills`](.agents/skills)
