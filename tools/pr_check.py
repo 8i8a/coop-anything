@@ -28,7 +28,15 @@ if bins:
 sens = [p for p in paths if p.startswith(SENSITIVE) or p in SENSITIVE]
 if sens:
     look.append("Touches code, workflows or agent rules (needs a careful human read): " + ", ".join(f"`{p}`" for p in sens))
-if not sens and not bins:
+CODE = re.compile(r"(\.(c|cc|cpp|h|hpp|cs|py|js|ts|lua|ps1|psm1|bat|cmd|sh|uc|java|rs|go|asm|s)$|(^|/)(Makefile|CMakeLists\.txt|[^/]*\.mk)$)", re.I)
+code = [p for p in paths if CODE.search(p) and not (p.startswith(SENSITIVE) or p in SENSITIVE)]
+if code:
+    look.append(f"Adds or changes code ({len(code)} file(s), e.g. `{code[0]}`): read it before anyone builds or runs it")
+OFF_TREE = [p for p in paths if not p.startswith(("games/", "data/", "playbook/", "templates/", "research/")) and p not in ("DIRECTORY.md", "README.md", "CONTRIBUTING.md")]
+OFF_TREE = [p for p in OFF_TREE if not (p.startswith(SENSITIVE) or p in SENSITIVE)]
+if OFF_TREE:
+    look.append("Files outside the usual folders (games/, data/, playbook/): " + ", ".join(f"`{p}`" for p in OFF_TREE[:4]))
+if not sens and not bins and not code and not OFF_TREE:
     ok.append("Only docs and data files changed")
 
 # Content of added lines
