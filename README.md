@@ -24,8 +24,8 @@ friends install it in one click and join over Steam without port forwarding.
 The sky is the limit. Every game that runs on your PC is a candidate.
 
 Games being made co-op right now: **[Deus Ex](https://github.com/cranebeaker/deus-ex-coop)** (released) ·
-**Dungeon Keeper** · **S.T.A.L.K.E.R. Shadow of Chernobyl** · **S.T.A.L.K.E.R. Clear Sky** ·
-**Fallout: New Vegas** · **Zelda: Ocarina of Time**
+**Fallout: New Vegas** · **[Zelda: Ocarina of Time](https://github.com/cranebeaker/ocarina-coop)** (fully synced) ·
+**Dungeon Keeper** · **S.T.A.L.K.E.R. Shadow of Chernobyl** · **S.T.A.L.K.E.R. Clear Sky**
 
 ## Quick start
 
