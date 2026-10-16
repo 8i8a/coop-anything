@@ -25,7 +25,7 @@ The sky is the limit. Every game that runs on your PC is a candidate.
 
 Games being made co-op right now: **[Deus Ex](https://github.com/cranebeaker/deus-ex-coop)** (released) ·
 **Fallout: New Vegas** · **[Zelda: Ocarina of Time](https://github.com/cranebeaker/ocarina-coop)** (fully synced) ·
-**Dungeon Keeper** · **S.T.A.L.K.E.R. Shadow of Chernobyl** · **S.T.A.L.K.E.R. Clear Sky**
+**Dungeon Keeper** · **[S.T.A.L.K.E.R. Shadow of Chernobyl](https://github.com/cranebeaker/stalker-soc-coop-fixes)** · **S.T.A.L.K.E.R. Clear Sky**
 
 ## Quick start
 
