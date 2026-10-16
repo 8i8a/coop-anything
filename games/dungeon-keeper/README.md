@@ -10,9 +10,13 @@
 
 ## Where things stand
 
-Two players share one keeper (one dungeon, one hand each) through the campaign. A test
-bot inside the exe plays levels and the campaign flow with two real game processes; runs
-pass with 0 desyncs. Not yet played by people on separate PCs.
+Release: [cranebeaker/dungeon-keeper-coop](https://github.com/cranebeaker/dungeon-keeper-coop)
+(v0.1.0 beta, source on [cranebeaker/keeperfx `archon-coop`](https://github.com/cranebeaker/keeperfx/tree/archon-coop)).
+
+Two to four players share one keeper (one dungeon, a hand each) through the campaign, over
+Steam or direct IP. Each player sees the others' hands in their chosen colour with their name.
+A test bot inside the exe plays levels and the campaign flow with real game processes
+(2 and 3 players, IP and Steam); runs pass with 0 desyncs.
 
 ## Existing work
 

@@ -1572,6 +1572,31 @@
   - https://github.com/dkfans/keeperfx/pull/5178
   - https://github.com/dkfans/keeperfx/pull/5171
   checked: '2026-10-16'
+- game: Dungeon Keeper
+  year: 1997
+  engine: KeeperFX
+  project: Dungeon Keeper Co-op (shared keeper, coop-anything)
+  url: https://github.com/cranebeaker/dungeon-keeper-coop
+  other_urls:
+  - https://github.com/cranebeaker/keeperfx/tree/archon-coop
+  kind: fork
+  status: alpha
+  coop_scope:
+    story: 'yes'
+    enemies: 'yes'
+    world_state: 'yes'
+    items: shared
+  players: 2-4
+  networking: steam-relay
+  open_source: 'yes'
+  last_activity: 2026-10
+  qa: automated
+  notes: Several players control one keeper on KeeperFX with a shared campaign, partner hands shown in each
+    player's colour, and Steam lobby networking (AppID 480) or direct IP. Tested by an in-game bot with real
+    game clients.
+  sources:
+  - https://github.com/cranebeaker/dungeon-keeper-coop
+  checked: '2026-10-16'
 - game: Dungeon Keeper 2
   year: 1999
   engine: Flame patch loader
