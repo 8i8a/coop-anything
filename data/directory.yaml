@@ -6001,3 +6001,25 @@
   - https://github.com/mstan/MegaManX4Recomp
   - https://1379.tech/mega-man-x4-recompiled-x-zero-coop-preview/
   checked: '2026-10-17'
+- game: Pilotwings 64
+  year: 1996
+  engine: N64 (native PC build from the Pilotwings64Decomp decompilation)
+  project: Birdman64 (two-player split-screen)
+  url: https://github.com/NoahVl/Birdman64
+  kind: decomp-port
+  status: playable
+  coop_scope:
+    players_visible: yes
+    story: partial
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: "2"
+  networking: ""
+  open_source: yes
+  last_activity: 2026-10
+  qa: community-reports
+  notes: Native PC port (Windows, Linux, experimental Android) that adds two-player split-screen to a single-player game; both players fly the same test with their own controller, HUD and score. Local only, MIT, bring your own ROM.
+  sources:
+  - https://github.com/NoahVl/Birdman64
+  checked: '2026-10-17'

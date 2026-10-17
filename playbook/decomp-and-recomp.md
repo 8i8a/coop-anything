@@ -312,7 +312,11 @@ Recompiled games can get co-op in code too, not just through hooks:
 - [MegaManX4Recomp](https://github.com/mstan/MegaManX4Recomp): Mega Man X4 (PS1, PSXRecomp) with
   two-player co-op through X's or Zero's campaign, local or online, and an experimental split camera.
 
-Both use **recomp-net**, a shared netplay layer for these recompilations: sign-in, lobby and
+- [Birdman64](https://github.com/NoahVl/Birdman64): Pilotwings 64 built natively from its
+  decompilation, with two-player split-screen added to a game that never had it. It downloads and
+  compiles the decompilation on the player's machine, so no game code is redistributed.
+
+The two Mega Man projects use **recomp-net**, a shared netplay layer for these recompilations: sign-in, lobby and
 NAT traversal over ICE/STUN/TURN, plus LAN and direct IP
 ([netplay notes](https://github.com/mstan/MegaManXSNESRecomp/blob/main/docs/netplay.md)). Design
 points worth copying: both players supply their own ROM, the room adopts the host's mods and
