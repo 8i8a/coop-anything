@@ -155,7 +155,7 @@ above gives a feel for it.
   [tools](playbook/tools.md) · [how co-op mods work](playbook/how-coop-mods-work.md) ·
   [engine families](playbook/engine-families.md) · [reviving mods](playbook/reviving-abandoned-mods.md) ·
   [networking](playbook/networking.md) · [Steam Spacewar relay](playbook/networking-steam-spacewar.md) ·
-  [split screen](playbook/split-screen.md) · [console emulators](playbook/console-emulators.md) ·
+  [split screen](playbook/split-screen.md) · [console emulators](playbook/console-emulators.md) · [Switch](playbook/switch.md) ·
   [decomp and recomp](playbook/decomp-and-recomp.md) ·
   [automated QA](playbook/automated-qa.md) · [multi-agent workflows](playbook/multi-agent-workflows.md) ·
   [methods](playbook/methods.md) · [lessons](playbook/lessons.md)

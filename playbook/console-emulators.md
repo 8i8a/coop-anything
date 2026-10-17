@@ -264,3 +264,5 @@ Re-check these before telling a user they work.
 9. All Switch emulator network features.
 10. Project64 netplay in current builds.
 11. Mainline Dolphin scripting (reported stalled; fork only).
+
+Nintendo Switch has its own page: [switch.md](switch.md) (local wireless, hooking on your own console, decompilations).
