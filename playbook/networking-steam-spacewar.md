@@ -48,8 +48,12 @@ game-server one.
 (AppID 480), not your mod. Tell the friend to start the mod first, then accept
 the invite or click Join Game.
 
-For a 64-bit game, use `steam_api64.dll` from the same release. Check the
-architecture before using it: a 32-bit exe needs the PE32 i386 DLL.
+For a 64-bit game, use `Windows-x64/steam_api64.dll` from the same release:
+
+- SHA-256 `eb17909a76668cf9ae0b92a618a34a50f6c73d3a6787cb4dd8ce36a8b10bfb75`
+
+Check the architecture before using either: a 32-bit exe needs the PE32 i386 DLL, a
+64-bit exe needs the x64 one. Several struct offsets differ between them (below).
 
 ## Design: no SDK headers, dynamic loading only
 
@@ -136,6 +140,10 @@ GameRichPresenceJoinRequested_t { uint64 friend; char connect[256]; }
 - **SteamNetworkingMessage_t** (32-bit, MSVC build of the DLL): `data` at offset 0,
   `size` at 4, and the sender identity at **16**. KeeperFX falls back to 12 if the
   identity at 16 doesn't decode. Always call `SteamNetworkingMessage_t_Release`.
+- **SteamNetworkingMessage_t on 64-bit** (`steam_api64.dll`): `data` at 0 (an
+  8-byte pointer), `size` at **8**, sender identity at 16. Reading `size` at 4 on
+  x64 gives garbage. `FriendGameInfo_t` and the callback structs above keep the
+  same layout on x64.
 
 ### Messaging rules learned the hard way
 
@@ -231,10 +239,53 @@ playing the real Spacewar.
   everything to the host's SteamID.
 - Send game packets unreliable with NoNagle (the engine has its own reliability).
   Keep-alive and goodbye on channel 1 as reliable messages.
+- **Only lobby members get through.** Before forwarding a new peer's traffic into the
+  local server, check that their SteamID is in your lobby
+  (`GetNumLobbyMembers` / `GetLobbyMemberByIndex`) and drop anyone else. Add
+  those two exports to the mock too.
 - Exit when the game process exits, and leave the lobby and clear rich presence.
 - The engine's own packet lag and loss emulation (Unreal Engine 1 has `PktLag=`,
   `PktLoss=`, `PktOrder=`, `PktDup=` console commands) is a cheap stand-in for
   relay latency in automated tests.
+
+## TCP games: a stream relay
+
+The pattern above is for UDP games. When the game talks TCP (many source ports
+and emulator netplay do), relay streams instead of packets:
+
+- Give each TCP connection a **stream id**, and send small frames over Steam:
+  `open(id)`, `data(id, bytes)`, `close(id)`.
+- Send them **reliable and ordered** (TCP expects that), split into chunks of
+  about 16000 bytes.
+- When a reliable send fails because the send buffer is full, wait a few ms and
+  retry; never drop stream data.
+- Propagate close both ways: a local socket closing sends `close(id)`, and a
+  `close(id)` from the peer shuts the local socket. Otherwise one side hangs on a
+  half-open connection.
+- The host opens one local TCP connection to the game's server per remote stream
+  id, the same way the UDP relay opens one socket per player.
+
+## Writing the helper exe: gotchas
+
+- If another tool starts the helper with redirected output, call
+  `setvbuf(stdout, NULL, _IONBF, 0)` or its log arrives late or never.
+- Check that stdin is a console before using `_kbhit` / `_getch` for a menu; with
+  redirected stdin they misbehave.
+- When the helper starts a local game server as a child process, start it with
+  `CREATE_NEW_PROCESS_GROUP` and stop it with Ctrl+Break
+  (`GenerateConsoleCtrlEvent`) so it shuts down cleanly, and put it in a job object
+  with kill-on-close so it never outlives the helper.
+- Export macros: `__declspec(dllexport)` and `__cdecl` in the order mingw accepts
+  can fail under MSVC. Test the mock DLL with both compilers if you support both.
+
+## Packaging and status
+
+- Ship `steam_api.dll` (or `steam_api64.dll`) next to the helper exe, and have the
+  helper write `steam_appid.txt` (`480`) itself, so a missing file can't break it.
+- Make the status line honest and specific: say whether real game traffic has
+  passed through the relay yet (not just "connected to Steam"), and when someone
+  joins a lobby id that isn't one of yours (the lobby data key is missing), say so
+  plainly ("that lobby is not a <game> co-op game").
 
 ## Status / unknowns
 
