@@ -42,12 +42,21 @@ Tool stack (all open source):
 | asm-differ | Older diff script, better line-to-asm mapping than objdiff per one author | many | mentioned in [Macabeus's write-up](https://macabeus.medium.com/development-journey-on-game-decompilation-using-ai-part-3-a0a322e0d274) |
 | decomp-permuter | Random and manual rewrites of C to lower the diff score | MIPS (IDO, maybe GCC), PowerPC, ARM32 | [simonlindholm/decomp-permuter](https://github.com/simonlindholm/decomp-permuter) |
 | decomp.me | Web scratchpad: paste C, compile with the right compiler, see the diff, share | many compiler presets | [decomp.me](https://decomp.me) **(unverified: site not fetched; widely documented in the repos above)** |
+| DecompPipeline | Agent-driven decomp: Ghidra prepares each function, cheap model workers (Haiku) write the C, and an emulator-based test oracle judges PASS or FAIL by behaviour, not bytes; a `port/` stage builds the readable C as a native program | Dreamcast SH-4 today; new CPUs are new targets (Xbox / Xbox 360 planned by the author) | [GeneralAtrox/DecompPipeline](https://github.com/GeneralAtrox/DecompPipeline) (MIT, community contribution) |
 | decomp.dev | Progress hub fed by objdiff reports | many | [decomp.dev](https://decomp.dev). Its front page now says the index and new submissions are being sunset while existing pages stay (fetched Oct 2026). |
 
 Matching versus non-matching: matching projects pin the exact compiler (IDO, mwcc, agbcc, MSVC
 and so on). Non-matching ones accept equivalent behavior. Ports usually need only behavior, so
 a 100% match is not required to ship a port, but a high match percentage means the
 reconstructed code is trustworthy.
+
+**Decomp with agents.** [DecompPipeline](https://github.com/GeneralAtrox/DecompPipeline) is a
+full workflow for decompiling a game with AI agents, shared by its author for Dreamcast. Each
+function goes to a locked-down small model; a machine judge runs the original and the new C
+on the same generated inputs in an emulator-based oracle and returns only PASS or FAIL, so the
+agent can't argue or game the score. Functions are clustered into systems, worked in parallel,
+then made readable and built as a native port. The tool holds no game data: each game is a
+project folder, each CPU a target, so the author expects it to retarget to other consoles.
 
 Mature projects to know (not exhaustive):
 

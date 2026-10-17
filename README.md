@@ -31,6 +31,7 @@ From the community: **[Mega Man X](https://github.com/mstan/MegaManXSNESRecomp)*
 **[Mega Man X4](https://github.com/mstan/MegaManX4Recomp)** (native PC with co-op netplay) ·
 **[Pilotwings 64](https://github.com/NoahVl/Birdman64)** (split-screen) ·
 **Zelda: Oracle of Seasons** ([in progress](https://github.com/cranebeaker/coop-anything/issues/1)) · yours next?
+Community tools: **[DecompPipeline](https://github.com/GeneralAtrox/DecompPipeline)** (agent-driven decompilation of console games, Dreamcast first).
 
 ## Quick start
 
@@ -83,7 +84,7 @@ Both paths end the same way: automated tests with real game clients
 | Unreal Engine 4/5 | Lua or C++ mods with an SDK dump of the game's classes | UE4SS, Dumper-7 |
 | RE Engine, FromSoftware, other proprietary | DLL hooks; extend the game's own online features where they exist | REFramework, MinHook, Ghidra, REA, x64dbg |
 | Decompiled or open source (N64 decomps, KeeperFX, OpenMW, source ports) | Add networking directly in the code | A compiler, the decomp, Docker cross builds |
-| Console only (PS1, PS2, N64, GameCube, Wii, GBA, ...) | Decomp or recompiled PC port first; else emulator netplay, or a memory-sync mod between two emulators | Decomps and recompilers (N64Recomp, XenonRecomp), PCSX2 PINE, Dolphin Memory Engine, BizHawk / mGBA Lua |
+| Console only (PS1, PS2, N64, Dreamcast, GameCube, Wii, GBA, ...) | Decomp or recompiled PC port first; else emulator netplay, or a memory-sync mod between two emulators | Decomps and recompilers (N64Recomp, XenonRecomp), PCSX2 PINE, Dolphin Memory Engine, BizHawk / mGBA Lua |
 | Closed binary, nothing else | Full reverse engineering of state, saves and levels; the hardest path | REA, GhidraMCP, ida-pro-mcp, Frida, Cheat Engine |
 
 Console games: [emulator co-op](playbook/console-emulators.md) and
