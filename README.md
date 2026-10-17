@@ -27,6 +27,11 @@ Games being made co-op right now: **[Deus Ex](https://github.com/cranebeaker/deu
 **[Fallout: New Vegas](https://github.com/cranebeaker/fnv-coop)** · **[Zelda: Ocarina of Time](https://github.com/cranebeaker/ocarina-coop)** (fully synced) ·
 **[Dungeon Keeper](https://github.com/cranebeaker/dungeon-keeper-coop)** · **[S.T.A.L.K.E.R. Shadow of Chernobyl](https://github.com/cranebeaker/stalker-soc-coop-fixes)** · **S.T.A.L.K.E.R. Clear Sky**
 
+From the community: **[Mega Man X](https://github.com/mstan/MegaManXSNESRecomp)** and
+**[Mega Man X4](https://github.com/mstan/MegaManX4Recomp)** (native PC with co-op netplay) ·
+**[Pilotwings 64](https://github.com/NoahVl/Birdman64)** (split-screen) ·
+**Zelda: Oracle of Seasons** ([in progress](https://github.com/cranebeaker/coop-anything/issues/1)) · yours next?
+
 ## Quick start
 
 Tell your agent (Claude Code, Codex, Gemini CLI, Cursor, OpenCode, ...):
