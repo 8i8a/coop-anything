@@ -5955,3 +5955,49 @@
   sources:
   - https://github.com/tjoaks/anchor-2s2h
   checked: '2026-10-16'
+- game: Mega Man X
+  year: 1993
+  engine: SNES (native PC static recompilation, snesrecomp)
+  project: MegaManXSNESRecomp (X and Zero co-op)
+  url: https://github.com/mstan/MegaManXSNESRecomp
+  kind: decomp-port
+  status: playable
+  coop_scope:
+    players_visible: yes
+    story: yes
+    enemies: yes
+    world_state: yes
+    items: unknown
+  players: "2"
+  networking: hosted-relay
+  open_source: yes
+  last_activity: 2026-10
+  qa: community-reports
+  notes: Native PC recompilation with playable Zero, couch co-op and online netplay through the shared recomp-net lobby and relay (LAN and direct IP too). Players supply their own ROMs.
+  sources:
+  - https://github.com/mstan/MegaManXSNESRecomp
+  - https://github.com/mstan/MegaManXSNESRecomp/blob/main/docs/netplay.md
+  checked: '2026-10-17'
+- game: Mega Man X4
+  year: 1997
+  engine: PS1 (native PC static recompilation, PSXRecomp)
+  project: MegaManX4Recomp (X and Zero co-op)
+  url: https://github.com/mstan/MegaManX4Recomp
+  kind: decomp-port
+  status: alpha
+  coop_scope:
+    players_visible: yes
+    story: yes
+    enemies: yes
+    world_state: yes
+    items: unknown
+  players: "2"
+  networking: hosted-relay
+  open_source: yes
+  last_activity: 2026-10
+  qa: community-reports
+  notes: Native PC recompilation for Windows and Linux with two-player co-op through X's or Zero's campaign, local or netplay (recomp-net), unified or experimental split camera. Player 1 owns story progress. MIT.
+  sources:
+  - https://github.com/mstan/MegaManX4Recomp
+  - https://1379.tech/mega-man-x4-recompiled-x-zero-coop-preview/
+  checked: '2026-10-17'

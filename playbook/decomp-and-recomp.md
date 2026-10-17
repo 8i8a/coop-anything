@@ -302,3 +302,18 @@ Ports: [Shipwright](https://github.com/HarbourMasters/Shipwright),
 [jak-project](https://github.com/open-goal/jak-project).
 Roundups: [Held Games recompiled list](https://heldgames.com/guides/recompiled-games-list)
 (secondary, dated Oct 2026).
+
+## Real co-op on recompilations
+
+Recompiled games can get co-op in code too, not just through hooks:
+
+- [MegaManXSNESRecomp](https://github.com/mstan/MegaManXSNESRecomp): Mega Man X (SNES) as a native
+  PC program with playable Zero, couch co-op and online netplay.
+- [MegaManX4Recomp](https://github.com/mstan/MegaManX4Recomp): Mega Man X4 (PS1, PSXRecomp) with
+  two-player co-op through X's or Zero's campaign, local or online, and an experimental split camera.
+
+Both use **recomp-net**, a shared netplay layer for these recompilations: sign-in, lobby and
+NAT traversal over ICE/STUN/TURN, plus LAN and direct IP
+([netplay notes](https://github.com/mstan/MegaManXSNESRecomp/blob/main/docs/netplay.md)). Design
+points worth copying: both players supply their own ROM, the room adopts the host's mods and
+options and refuses mismatches, and Player 1 owns story progress while Player 2 joins.
