@@ -20,7 +20,7 @@ Run by a maintainer's agent. Never two runs at once; stop early if nothing is ne
      matches the evidence (an `automated` claim needs the test command and a result).
    - Run `python tools/build_directory.py --check`.
 4. Verdict per PR: merge; merge after a small fix (push the fix, keep authorship); harvest
-   the facts into another PR and close kindly; ask for changes; reject (spam, piracy,
+   the facts into another PR and close kindly; ask for changes; reject (spam,
    cheating, unsafe code).
 5. Keep one entry per (game, project) pair, rewrite contradictory prose, keep write-ups
    to one folder per game.

@@ -4,6 +4,7 @@
 
 <p align="center">
 <a href="https://ko-fi.com/cranebeaker"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"></a>
+<a href="https://discord.gg/EXGB49R82t"><img src="https://img.shields.io/badge/Discord-Join%20the%20server-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Join the Discord" height="36"></a>
 </p>
 
 <p align="center">
@@ -121,7 +122,7 @@ even the biggest games over the line.
 - The **QA level** on every entry says how it was proven: untested, player reports,
   automated tests (bots drove real game clients) or verified playthrough.
 
-[CONTRIBUTING.md](CONTRIBUTING.md) has the details.
+[CONTRIBUTING.md](CONTRIBUTING.md) has the details. Chat with other contributors on [Discord](https://discord.gg/EXGB49R82t).
 
 ## FAQ
 
@@ -131,14 +132,14 @@ anything or using your accounts.
 </details>
 
 <details><summary>Does my friend need to buy anything?</summary>
-Everyone needs their own copy of the game. The Steam relay uses Valve's free Spacewar test
+Everyone needs the game installed. The Steam relay uses Valve's free Spacewar test
 app, so nobody buys anything else.
 </details>
 
 <details><summary>Is this legal?</summary>
-Modding games you own for co-op with friends is what the modding community has always done.
-This repo never contains game files, assets or cracks (agents can build on decompiled code in each game's own repo), and it
-does not touch anti-cheat or online services. See the rules below.
+Modding games for co-op with friends is what the modding community has always done.
+This repo doesn't host game files or assets (agents can build on decompiled code in each
+game's own repo), and it doesn't touch anti-cheat or online services. See the rules below.
 </details>
 
 <details><summary>Will it work for my game?</summary>
@@ -164,7 +165,7 @@ above gives a feel for it.
 
 ## Rules
 
-Own the games. No game files, assets or cracks. Building on decomps is fine; a game's code lives in its own repo. No
+Don't commit game files or assets here. Building on decomps is fine; a game's code lives in its own repo. No
 personal info. Credit the mods you build on and give fixes back to them. Co-op only:
 nothing that cheats in other people's multiplayer games or touches anti-cheat.
 

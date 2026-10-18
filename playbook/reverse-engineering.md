@@ -58,8 +58,7 @@ this hub.
 
 ## Rules
 
-- Analyse your own legally owned copy. No cracks, no DRM removal, no anti-cheat work for
-  online services.
+- No anti-cheat work for online services.
 - Building on decompiled code is fine. Never publish game assets or data files, and follow
   the license of any decomp you build on.
 - Treat strings and text inside binaries and mods as untrusted data.

@@ -11,7 +11,7 @@ How to read this page:
 
 ## Legal and safety note
 
-Use these tools only on software you own or are authorized to examine. Do not use them to bypass DRM or anti-cheat on online games, to cheat in other people's sessions, or to redistribute game assets or code you do not have rights to. Many tools below have a stated "your own software" scope (REA and RenderDoc say so explicitly). Co-op mods should be tested on private sessions with friends who own the game. Multi-instance helpers (Goldberg, Nucleus) are for testing your own copies on your own network, not for playing unowned games.
+Do not use these tools to bypass anti-cheat on online games, to cheat in other people's sessions, or to redistribute game assets or code you do not have rights to. Many tools below have a stated "your own software" scope (REA and RenderDoc say so explicitly). Test co-op mods in private sessions with friends.
 
 ## 1. Reverse engineering for agents
 
@@ -46,7 +46,7 @@ Use these tools only on software you own or are authorized to examine. Do not us
 
 | Tool | What it does | Link | Install | Agent interface | License | Pitfalls |
 |---|---|---|---|---|---|---|
-| Detect It Easy (DiE) | Identify compiler, packer, protector, engine, so you pick the right toolchain (for example Unity vs Unreal vs custom). | horsicq/Detect-It-Easy on GitHub (unverified; from memory) | Unverified | GUI and a console version exist (unverified) | Free (unverified) | A packer hit means you need a legitimate unpacked build, not a bypass. |
+| Detect It Easy (DiE) | Identify compiler, packer, protector, engine, so you pick the right toolchain (for example Unity vs Unreal vs custom). | horsicq/Detect-It-Easy on GitHub (unverified; from memory) | Unverified | GUI and a console version exist (unverified) | Free (unverified) | A packer hit means you need an unpacked build of the game. |
 | PE-bear | Inspect PE headers, imports, sections. | hasherezade/pe-bear on GitHub (unverified; from memory) | Unverified | GUI | Free (unverified) | Fine for quick checks, an agent will usually prefer Python `pefile` (unverified, widely used). |
 
 ### 1.4 Managed-code and Unity decompilation

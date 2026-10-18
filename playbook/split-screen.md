@@ -59,6 +59,5 @@ The same tricks are what an automated QA harness needs to run several clients on
 
 ## Rules
 
-Own every copy you run. Steam API emulators are for LAN play of games you own, never for
-piracy or for joining online services. Don't publish other people's paid or early-access
+Steam API emulators are for LAN play, not for joining online services. Don't publish other people's paid or early-access
 handlers; write your own.

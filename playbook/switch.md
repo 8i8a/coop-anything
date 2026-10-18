@@ -2,8 +2,8 @@
 
 Switch games are the hardest console target legally and technically, but people are already
 modding them. This page collects the routes and starting points. Everything here assumes **your
-own console and your own game dumps**. Nintendo is very protective: never link or host game
-files, keys, firmware, leaked source code or anything that helps piracy or online cheating.
+console with custom firmware**. Nintendo is very protective: never link or host game
+files, keys, firmware or leaked source code, and nothing for online cheating.
 
 ## Routes
 
@@ -66,12 +66,12 @@ projects with public source and a clear license, and never use leaked code.
 ## Emulators
 
 Switch emulators exist, but many have been taken down or received legal notices. This playbook
-does not link them. If you use one, use it only with your own dumps, and know that its future
+does not link them. If you use one, know that its future
 may be uncertain.
 
 ## Rules
 
-- Your own console, your own games, your own dumps. No keys, firmware, game files or links to them.
+- No keys, firmware, game files or links to them in this repo.
 - No leaked or stolen source code.
 - No online cheating, no use against Nintendo's online services.
 - Document findings and your own code; never redistribute game code.

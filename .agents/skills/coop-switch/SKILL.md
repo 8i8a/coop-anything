@@ -1,11 +1,11 @@
 ---
 name: coop-switch
-description: Mod Nintendo Switch games for co-op or local wireless on your own console: find a game's session code (PIA, nn::ldn) with Ghidra, hook it with exlaunch on Atmosphere, test with ldn_mitm or kinnay/LDN, and use Switch decompilations where they exist.
+description: Mod Nintendo Switch games for co-op or local wireless on a console: find a game's session code (PIA, nn::ldn) with Ghidra, hook it with exlaunch on Atmosphere, test with ldn_mitm or kinnay/LDN, and use Switch decompilations where they exist.
 ---
 
 # Switch co-op and local wireless
 
-1. Own console with custom firmware (Atmosphere), your own game dumps. Never handle keys, firmware, game files, leaked code, or Nintendo's online services.
+1. A console with custom firmware (Atmosphere). Never put keys, firmware or game files in a repo, and stay away from Nintendo's online services.
 2. Find out what multiplayer the game already has: online, LAN, local wireless, split-screen.
 3. Already has online or LAN: find where it creates sessions (PIA and `nn::ldn` calls) with Ghidra plus REA or GhidraMCP, naming SDK calls with nnheaders.
 4. Hook those functions with exlaunch (Skyline for Smash Ultimate) and redirect the session type to local wireless.
