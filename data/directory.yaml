@@ -6048,3 +6048,49 @@
   - 'WebSearch: World in Conflict campaign co-op mod multiplayer singleplayer missions; "World in Conflict" coop campaign
     mod moddb; play campaign with friend co-op, 2026-10-17'
   - 'Not checked: Massgate forums, WiC Discords, Reddit, non-English searches'
+- game: Crab Champions
+  engine: Unreal Engine 5
+  project: CrabSync
+  url: https://github.com/Dudiebug/CrabMods/blob/main/crabsync/README.md
+  other_urls:
+  - https://github.com/Dudiebug/CrabMods
+  kind: mod
+  status: playable
+  coop_scope:
+    players_visible: yes
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: shared
+  players: as the base game's online lobby
+  networking: unknown
+  open_source: yes
+  last_activity: 2026-10
+  qa: none
+  notes: The game already has online co-op; CrabSync makes it one team run with a shared inventory, crystals, loadout and health pool (everyone dies together), and opens the solo-only Arcade and Holdout minigames to the lobby. Host-only install, every part can be switched off. Ships with CrabMods (new items) and a mod manager. MIT. Tied to one game build.
+  sources:
+  - https://github.com/Dudiebug/CrabMods
+  - https://github.com/Dudiebug/CrabMods/releases
+  checked: '2026-10-18'
+- game: Half Sword
+  engine: Unreal Engine 5
+  project: Half Sword Multiplayer Mod (HSMMod)
+  url: https://github.com/Dudiebug/halfsword-multiplayer-mod
+  kind: mod
+  status: prototype
+  coop_scope:
+    players_visible: yes
+    story: no
+    enemies: unknown
+    world_state: partial
+    items: per-player
+  players: up to 6
+  networking: steam-relay
+  open_source: yes
+  last_activity: 2026-10
+  qa: none
+  notes: Online multiplayer for a single-player game in one drop-in DLL. Steam lobbies and invites, each player simulates their own fighter, hits go through the game's own damage code, gore, grabs and dropped weapons synced; match modes, chat, spectating. Pre-release v0.4, first two-player test done and its fixes released. Tied to one game build.
+  sources:
+  - https://github.com/Dudiebug/halfsword-multiplayer-mod
+  - https://github.com/Dudiebug/halfsword-multiplayer-mod/releases
+  checked: '2026-10-18'
