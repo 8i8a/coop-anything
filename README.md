@@ -137,7 +137,7 @@ app, so nobody buys anything else.
 
 <details><summary>Is this legal?</summary>
 Modding games you own for co-op with friends is what the modding community has always done.
-This repo never contains game files, cracks or decompiled source of closed games, and it
+This repo never contains game files, assets or cracks (agents can build on decompiled code in each game's own repo), and it
 does not touch anti-cheat or online services. See the rules below.
 </details>
 
@@ -164,7 +164,7 @@ above gives a feel for it.
 
 ## Rules
 
-Own the games. No game files, cracks or decompiled closed source in this repo. No
+Own the games. No game files, assets or cracks. Building on decomps is fine; a game's code lives in its own repo. No
 personal info. Credit the mods you build on and give fixes back to them. Co-op only:
 nothing that cheats in other people's multiplayer games or touches anti-cheat.
 
