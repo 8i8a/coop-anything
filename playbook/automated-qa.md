@@ -41,6 +41,7 @@ policy and the techniques that made it work on four very different engines.
 | Dungeon Keeper (KeeperFX) | Custom C, lockstep | `-archontest` flag: a bot inside the exe writes input packets like a human | Per-turn checksums on both sides, 0 mismatches, plus gameplay asserts |
 | Fallout New Vegas | Gamebryo | xNVSE plugin serving JSON-RPC on a named pipe (`exec`, `waitFor`, `state`) | World snapshots split into shared and per-player state, diffed between clients |
 | STALKER (xrMPE) | X-Ray | Test-only script archive hooked from a space restrictor's logic | In-engine checks written to its own log file |
+| The Witcher 3 (Witcher Online port) | REDengine 3 | Test-only script mod plus a test ASI that registers natives (env, log, quit) through WitcherNativeBridge; it skips movies, loads a save and reports each second | Each client compares the remote player's ghost with the networked position; every bot must log PASS |
 
 ## Rules learned the hard way
 

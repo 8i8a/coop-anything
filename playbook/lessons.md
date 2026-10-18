@@ -1,4 +1,4 @@
-# The 20 most important hard-learned lessons
+# Hard-learned lessons
 
 Drawn from six co-op projects (STALKER, Fallout New Vegas, Dungeon Keeper 1, Ocarina of Time, Animal Crossing, Deus Ex). Each one wasted time or produced a false result at least once.
 
@@ -43,3 +43,11 @@ Drawn from six co-op projects (STALKER, Fallout New Vegas, Dungeon Keeper 1, Oca
 20. **Never overclaim.** Bot-versus-bot runs, a mock Steam, and fixes reasoned from code with no two-player test are all useful, but none is a human or two-account proof. Set the QA level honestly, write only what was actually tested, and keep the open items in your notes or GitHub issues so the next agent picks them up.
 
 21. **Several copies of a single-instance game for automated tests.** Besides the named mutex, check WinMain for a FindWindow(own window class) early exit. Neutralize both inside your own process via IAT hooks, and launch the copies from a long-lived process so they are not killed along with a short-lived launcher's job object. Example: Fallout: New Vegas (fnv-coop).
+
+22. **A copied install is not enough when settings live in Documents.** The Witcher 3 saves its settings from the main menu, so test flags like `-width 960 -height 540` ended up in the owner's real settings file and its backup. Give every test instance its own user folder: hook `SHGetKnownFolderPath(FOLDERID_Documents)` and `SHGetFolderPath(CSIDL_PERSONAL)` in your own process, seed the sandbox with copies of the settings and the one save the test loads, and make the test plugin refuse to start without the sandbox.
+
+23. **Faking focus has side effects.** To keep an alt-tabbed test instance running, The Witcher 3 needed `GetForegroundWindow` faked and `WM_ACTIVATE`/`WM_ACTIVATEAPP`/`WM_KILLFOCUS` filtered. A game that believes it is focused also clips the cursor, warps the mouse, steals focus and reads the keyboard, so in test mode neutralize `ClipCursor`, `SetCursorPos`, `SetForegroundWindow`, `GetAsyncKeyState` and raw-input `INPUTSINK` too, and mute the instance's own audio session.
+
+24. **Two modern DX12 instances can take down the GPU driver.** Two Witcher 3 Remastered instances with ray tracing ended in a device-removed crash and a driver reset the owner could notice. Apply the game's own lowest preset to test instances (expand it from the game's options XML rather than guessing keys), turn ray tracing off, cap the frame rate, and check free VRAM first: desktop apps can hold most of the card.
+
+25. **First-run screens are not yours to answer.** Account-link and telemetry consent screens appear on a fresh launch. Close them in test mode without signing in or recording a choice, so the owner still sees them and decides. System dialogs (for example a one-time "skill points reset" notice after loading an old save) do pause the game, so log and answer those.

@@ -2574,38 +2574,127 @@
   url: https://www.nexusmods.com/witcher3/mods/11590
   other_urls:
   - https://github.com/rejuvenate7/WitcherOnline
+  - https://github.com/rejuvenate7/WitcherNativeBridge
   - https://www.nexusmods.com/witcher3/mods/11717
   kind: mod
   status: partial
   coop_scope:
+    players_visible: true
     story: false
     enemies: false
     world_state: partial
     items: per-player
   players: unknown
-  networking: hosted-relay
-  open_source: partial
-  last_activity: unknown
+  networking: dedicated-server
+  open_source: true
+  last_activity: 2026-08
   qa: community-reports
-  notes: Syncs player position, equipment, horses and boats, Gwent, party time and weather, but NOT quests, NPCs
-    or enemies; the author says enemies will never be added. Connects to an official server automatically and needs
-    game 4.04+.
+  notes: Syncs player movement, combat and appearance, emotes, chat, Gwent duels, trading, horse and boat passengers;
+    a party syncs time, weather and dialog choices. Quests, NPCs and enemies are not synced, so players cannot fight
+    together; the author says enemies will never be added, while the README lists NPC sync as in progress. Requires
+    game 4.04 per its wiki. The public build (GitHub 4755ee7, 2026-08) does not run on Remastered 5.0/5.01 (Sep/Oct
+    2026); its full gwintManager.ws/gwintGameMenu.ws overrides declare 4.04 Gwent natives that 5.01 removed (static
+    check, see games/witcher-3). Its WitcherNativeBridge helper (MIT) got a 5.01 update on 2026-10-08. Official
+    server or a self-hosted Java server (UDP 40000, port forwarding). Client source GPL-3.0.
   sources:
   - https://www.nexusmods.com/witcher3/mods/11590
   - https://github.com/rejuvenate7/WitcherOnline
+  - https://github.com/rejuvenate7/WitcherNativeBridge/commits/master
+  - https://rejuvenate.gitbook.io/witcheronline/guides/getting-started
+  - https://rejuvenate.gitbook.io/witcheronline/guides/server-setup
+  - https://rejuvenate.gitbook.io/witcheronline/general-information/playguide
   - https://overclock3d.net/news/software/the-witcher-online-2-0-has-arrived-and-its-nuts/
-  checked: 2026-10-16
+  checked: 2026-10-18
+- game: 'The Witcher 3: Wild Hunt'
+  year: 2015
+  engine: REDengine 3
+  project: W3Coop (Witcher Online for Remastered)
+  url: https://github.com/Emillock/witcher3-coop
+  other_urls:
+  - https://github.com/Emillock/WitcherOnline/tree/remastered-5.01
+  kind: fork
+  status: alpha
+  coop_scope:
+    players_visible: true
+    story: false
+    enemies: false
+    world_state: unknown
+    items: per-player
+  players: unknown
+  networking: steam-relay
+  open_source: true
+  last_activity: 2026-10
+  qa: automated
+  notes: Port of Witcher Online to Remastered 5.01 (Steam). Client reads script strings as UTF-8, scripts moved
+    to the 5.x API, Custom Player Characters and Chill Out replaced by stand-ins, Gwent duels off. w3relay carries
+    the traffic over Steam (Spacewar, friends-only lobby), so nobody forwards ports. Two automated two-client
+    tests pass on one PC (players visible, movement, also through the relay over a mock Steam); a join between
+    two real Steam accounts, chat, emotes and party sync are untested. Pre-release v0.1.0. Port GPL-3.0, relay
+    and harness MIT.
+  sources:
+  - https://github.com/Emillock/witcher3-coop
+  - https://github.com/Emillock/witcher3-coop/releases/tag/v0.1.0
+  - https://github.com/Emillock/WitcherOnline/tree/remastered-5.01
+  checked: 2026-10-18
 - game: 'The Witcher 3: Wild Hunt'
   year: 2015
   engine: REDengine 3
   project: WitcherMMO
   url: https://github.com/eofim/WitcherMMO
-  other_urls:
-  - https://github.com/Hyjarion/Witcher3-MP
-  - https://github.com/momo5502/w3m
+  kind: fork
+  status: prototype
+  coop_scope:
+    players_visible: true
+    story: false
+    enemies: false
+    world_state: partial
+    items: per-player
+  players: unknown
+  networking: dedicated-server
+  open_source: true
+  last_activity: 2026-10
+  qa: none
+  notes: Fork of Witcher Online whose only own commit (2026-10-02) renames the project. Its README lists persistent
+    characters, NPC and monster sync and shared quests as goals, none implemented yet, so it behaves like Witcher
+    Online 4.04.
+  sources:
+  - https://github.com/eofim/WitcherMMO
+  - https://github.com/eofim/WitcherMMO/commits/main
+  checked: 2026-10-18
+- game: 'The Witcher 3: Wild Hunt'
+  year: 2015
+  engine: REDengine 3
+  project: w3m (momo5502)
+  url: https://github.com/momo5502/w3m
   kind: mod
   status: prototype
   coop_scope:
+    players_visible: true
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: unknown
+  networking: dedicated-server
+  open_source: true
+  last_activity: 2026-01
+  qa: none
+  notes: Native C++ client with its own launcher, updater and server; players connect to the server automatically
+    when they start a game. Hooks use hardcoded addresses of a pre-remaster exe, so it cannot run on Remastered 5.x
+    as is. Roadmap issues (sync, dedicated server, trading) are mostly open.
+  sources:
+  - https://github.com/momo5502/w3m
+  - https://github.com/momo5502/w3m/issues/322
+  checked: 2026-10-18
+- game: 'The Witcher 3: Wild Hunt'
+  year: 2015
+  engine: REDengine 3
+  project: Witcher3-Multiplayer (werasik2aa)
+  url: https://github.com/werasik2aa/Witcher3-Multiplayer
+  kind: mod
+  status: abandoned
+  coop_scope:
+    players_visible: true
     story: unknown
     enemies: unknown
     world_state: unknown
@@ -2613,15 +2702,40 @@
   players: unknown
   networking: unknown
   open_source: true
-  last_activity: unknown
+  last_activity: 2026-01
   qa: none
-  notes: Experimental fork of Witcher Online aiming at persistent characters plus NPC and monster sync; early stage.
-    Witcher3-MP and w3m are smaller older attempts.
+  notes: WitcherScript plus an external helper fed through the -net -debugscripts channel. README claims position
+    and rotation sync, fight sync "10%" and NPC sync "30% buggy". Last commit "DS DISCONTINUED" (2026-01-15).
+    Witcher Online credits it. AGPL-3.0.
   sources:
-  - https://github.com/eofim/WitcherMMO
+  - https://github.com/werasik2aa/Witcher3-Multiplayer
+  checked: 2026-10-18
+- game: 'The Witcher 3: Wild Hunt'
+  year: 2015
+  engine: REDengine 3
+  project: Witcher3-MP (Hyjarion)
+  url: https://github.com/Hyjarion/Witcher3-MP
+  other_urls:
+  - https://github.com/Hyjarion/Witcher3-OnlineModule
+  kind: mod
+  status: abandoned
+  coop_scope:
+    players_visible: unknown
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: unknown
+  networking: unknown
+  open_source: true
+  last_activity: 2023-05
+  qa: none
+  notes: C++ project uploaded in one go on 2023-05-29 with a v0.0.1 build and a manual in the release; no later
+    activity. AGPL-3.0.
+  sources:
   - https://github.com/Hyjarion/Witcher3-MP
-  - https://github.com/momo5502/w3m
-  checked: 2026-10-16
+  - https://github.com/Hyjarion/Witcher3-MP/releases/tag/v0.0.1
+  checked: 2026-10-18
 - game: Cyberpunk 2077
   year: 2020
   engine: REDengine 4

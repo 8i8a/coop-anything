@@ -48,6 +48,11 @@ game-server one.
 (AppID 480), not your mod. Tell the friend to start the mod first, then accept
 the invite or click Join Game.
 
+**Check the game's own copy first.** A recent Steam game may already ship a
+`steam_api64.dll` with the flat API: The Witcher 3 Remastered's (`bin\x64_dx12`, version
+10.87.46.89) exports every function and interface version listed below. The relay can load
+it from the player's own install, so there is nothing to download or redistribute.
+
 For a 64-bit game, use `Windows-x64/steam_api64.dll` from the same release:
 
 - SHA-256 `eb17909a76668cf9ae0b92a618a34a50f6c73d3a6787cb4dd8ce36a8b10bfb75`
@@ -155,6 +160,14 @@ GameRichPresenceJoinRequested_t { uint64 friend; char connect[256]; }
   - a control channel (channel 1) carries goodbye, kick-with-reason and a 1 s keep-alive;
   - a peer silent for 20 s is dropped;
   - LobbyChatUpdate left/disconnected flags and SessionFailed also drop the peer.
+- **Answer keep-alives before game data starts.** A friend's relay usually joins the lobby
+  while their game is still loading, so for a minute only keep-alives flow. If the host
+  only tracks peers that sent game data, the joiner sees silence and gives up. Track every
+  lobby member that talks on the control channel, and have the joiner rejoin instead of
+  exiting when the host goes quiet (The Witcher 3 relay, found by the two-client test).
+- **LobbyCreated arrives twice on real Steam:** once as the `CreateLobby` call result
+  (703) and once as a broadcast callback (513). Handle it idempotently; a mock that sends
+  it once won't show this (The Witcher 3 relay's real-Steam smoke test).
 - **Channels:** game data is reliable and ordered on channel 0. Unsequenced or
   unreliable data is sent with `Unreliable` on the same channel. All sends add
   `NoNagle`. Send flags are Unreliable 0, NoNagle 1, Reliable 8.
