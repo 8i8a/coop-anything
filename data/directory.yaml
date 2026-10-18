@@ -1401,6 +1401,29 @@
 - game: 'Grand Theft Auto: San Andreas'
   year: 2004
   engine: RenderWare
+  project: CoopAndreas
+  url: https://github.com/Tornamic/CoopAndreas
+  kind: mod
+  status: alpha
+  coop_scope:
+    players_visible: yes
+    story: partial
+    enemies: partial
+    world_state: partial
+    items: unknown
+  players: unknown
+  networking: dedicated-server
+  open_source: yes
+  last_activity: 2026-10
+  qa: none
+  notes: The most complete story co-op attempt for San Andreas (GPL-3.0, 600+ stars, in active development). Syncs players, weapons and every shot, vehicles with tuning, explosions, separate peds, EnEx and mission markers; NPC sync and side missions are still in progress. Started through its own launcher, which runs gta_sa.exe with the mod DLL injected, plus a server.exe.
+  sources:
+  - https://github.com/Tornamic/CoopAndreas
+  - https://libertycity.net/files/gta-san-andreas/230164-coopandreas.html
+  checked: '2026-10-18'
+- game: 'Grand Theft Auto: San Andreas'
+  year: 2004
+  engine: RenderWare
   project: SACoop
   url: https://github.com/Parricidium/SACoop
   other_urls: []
