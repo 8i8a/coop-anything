@@ -37,7 +37,13 @@ No co-op client or gameplay test exists yet. The QA level is `none`.
 
 ## How to play
 
-There is no co-op package to install, host, or join yet. Do not expose the configured `debug_server` port as a multiplayer workaround; its protocol and purpose have not been audited.
+There is no native co-op package to install, host, or join. For shared play now, use Parsec as a one-copy, shared-control workaround:
+
+1. The host starts King's Bounty: Crossworlds on a Windows PC and shares the computer in Parsec.
+2. Friends connect to the host. By default, Parsec guests get gamepad access; the host must explicitly grant keyboard and mouse control for this mouse-driven game.
+3. Everyone plays the same running copy, hero, and save. Take turns moving and making battle decisions; this does not add separate heroes, networked game state, or independent saves.
+
+This is screen/input sharing, not a tested game co-op mode. Parsec's current [Hosting and Permissions guide](https://support.parsec.app/hc/en-us/articles/32381747079572-Hosting-and-Permissions) describes hosting a Windows PC, inviting guests, and granting keyboard/mouse permissions. Do not expose the configured `debug_server` port as a multiplayer workaround; its protocol and purpose have not been audited.
 
 ## Known issues
 
