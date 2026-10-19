@@ -23,7 +23,7 @@ There is no ready-to-use co-op campaign project in the sources searched so far, 
 
 Crossworlds combines real-time overworld exploration with turn-based tactical battles. The installed Steam copy has script files inside ZIP-readable `.kfs` session archives and includes `LuaIDE.dll`. A bounded search of text-like session scripts did not find network or multiplayer terms.
 
-Static inspection of `kb.exe` found Winsock imports and calls, Lua globals named `NetListen`, `NetConnect`, `NetSend`, and `NetConnected`, and engine server/client symbols. The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`; no listener was started and no port was exposed. The endpoint and API have not been traced far enough to show how a game client could join, whether Lua can receive messages, or whether campaign state is replicated. Treat this as engine/debug networking until proven otherwise.
+Static inspection of `kb.exe` found Winsock imports and calls, Lua globals named `NetListen`, `NetConnect`, `NetSend`, and `NetConnected`, and engine server/client symbols. Targeted decompilation also confirmed native TCP `listen`/`accept`, `connect`, `send`, and `recv` paths. The Lua table still exposes no receive callback, and the receive-to-Lua/game-command path has not been traced. The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`; no listener was started and no port was exposed. There is still no evidence that the native network layer lets a second player join the campaign or replicates campaign state.
 
 The release uses TheEngine, also used by Fantasy Wars and Elven Legacy. Their multiplayer modes may help explain the engine networking layer, but no source or matching local multiplayer build was available for comparison.
 
