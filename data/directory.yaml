@@ -6503,3 +6503,58 @@
   searched:
   - search GitHub (repo search, 435 results), Nexus mods list (58 mods), ModDB, Steam store API and web search, 2026-10-18
   - coop-anything issues/PRs via GitHub search API (0 hits), 2026-10-18
+- game: 'Call of Duty: Modern Warfare 3'
+  year: 2011
+  engine: IW 5.0 (Call of Duty)
+  project: AlterWare IW5-Mod
+  url: https://alterware.dev/
+  other_urls:
+  - https://forum.alterware.dev/t/iw5-mod-install-guide/462
+  kind: mod
+  status: partial
+  coop_scope:
+    story: false
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: 2
+  networking: unknown
+  open_source: 'no'
+  last_activity: 2026-10
+  qa: none
+  notes: Closed-source MW3 client focused on singleplayer/co-op plus multiplayer with bots and
+    dedicated servers; both players need a Steam-owned copy. Its shared play is Spec Ops/Survival,
+    not the campaign. A community Survival layer on top of it notes its Spec Ops co-op desyncs.
+  sources:
+  - https://alterware.dev/
+  - https://forum.alterware.dev/t/iw5-mod-install-guide/462
+  - https://www.moddb.com/mods/mw3-survival-mode-revived
+  checked: '2026-10-19'
+- game: 'Call of Duty: Modern Warfare 3'
+  year: 2011
+  engine: IW 5.0 (Call of Duty)
+  project: (none found)
+  url: ''
+  other_urls: []
+  kind: gap
+  status: none
+  coop_scope:
+    story: unknown
+    enemies: unknown
+    world_state: unknown
+    items: unknown
+  players: unknown
+  networking: unknown
+  open_source: unknown
+  last_activity: unknown
+  qa: none
+  notes: No campaign co-op has released for Modern Warfare 3 (2011) on any platform, and no project
+    ships it; the singleplayer engine carries no netcode. Spec Ops/Survival co-op does exist
+    (official, and via the AlterWare client). A from-zero attempt is written up in games/modern-warfare-3.
+  sources:
+  - https://github.com/louvenarde/open-iw5
+  - https://steamcommunity.com/sharedfiles/filedetails/?id=2953063348
+  - https://callofduty.fandom.com/wiki/Special_Ops/Modern_Warfare_3
+  checked: '2026-10-19'
+  searched:
+  - GitHub, Nexus, ModDB, Steam and the AlterWare forums via web search, 2026-10-18
