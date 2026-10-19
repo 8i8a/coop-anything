@@ -7,7 +7,7 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 - Steam identifies App 63910 as King's Bounty: Crossworlds, released 2010-09-17. The store page lists Single-player and describes the Armored Princess campaign plus the Champion of the Arena and Defender of the Crown mini-campaigns. Source: https://store.steampowered.com/app/63910/
 - Co-op Anything's current `DIRECTORY.md` and `games/` folder have no King's Bounty / Crossworlds entry.
 - The inspected Steam installation's manifest reports build ID `7254336`. The executable has no FileVersion or ProductVersion string; treat the manifest ID as a Steam depot build identifier, not as the in-game version. The exact executable identity is recorded privately in ignored `local/identity.md`.
-- Static PE import inspection of that `kb.exe` found Winsock imports for initialization/cleanup and TCP socket operations, including `socket`, `bind`, `listen`, `accept`, `connect`, `send`, `recv`, and `select` (several are imported by ordinal). A direct x86 call-site scan found calls to multiple imported socket functions, including socket creation, bind/listen/accept, connect and send. The binary's printable strings also include engine client/server classes (`serv_server_tcp_c`, `serv_client_tcp_c`, `ModuleLogicServer_c`), `NetListen`, `NetConnect`, `NetSend`, `NetConnected`, and `SPAWN_CLIENT`. The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`; a GOG forum post shows the same setting in a Crossworlds app.ini. This points to a debug service as one possible consumer of the network code, not a user-facing multiplayer mode. No remote listener was started or port exposed. Sources: https://www.gog.com/forum/kings_bounty_series/cant_install_update_for_crossworlds_goty/post2 and https://learn.microsoft.com/en-us/windows/win32/winsock/winsock-functions
+- Static PE import inspection of that `kb.exe` found Winsock imports for initialization/cleanup and TCP socket operations, including `socket`, `bind`, `listen`, `accept`, `connect`, `send`, `recv`, and `select` (several are imported by ordinal). A direct x86 call-site scan found calls to multiple imported socket functions, including socket creation, bind/listen/accept, connect and send. The binary also registers Lua globals `NetListen`, `NetSend`, `NetConnect`, and `NetConnected`, and contains engine client/server classes (`serv_server_tcp_c`, `serv_client_tcp_c`, `ModuleLogicServer_c`) and game-logic commands (`SPAWN_CLIENT`, `cmd_server_addclient_c`). The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`; a GOG forum post shows the same setting in a Crossworlds app.ini. This points to a debug service as one likely consumer of the TCP layer, not a user-facing multiplayer mode. No remote listener was started or port exposed. Sources: https://www.gog.com/forum/kings_bounty_series/cant_install_update_for_crossworlds_goty/post2 and https://learn.microsoft.com/en-us/windows/win32/winsock/winsock-functions
 - The quick search across text-like `.lua`, `.lu`, and `.script` entries in the installed `.kfs` archives found no network/multiplayer terms. It did find Lua scripts in `sessions/addon/ses.kfs` (221), `sessions/orcs/orcs.kfs` (63), `sessions/champion/champion.kfs` (30), and `sessions/defender/defender.kfs` (17). This is a bounded token search, not a full script/API analysis.
 - The install contains `LuaIDE.dll`, and the session archives are ZIP-readable `.kfs` containers. No archives were modified or extracted into the public repository.
 - The Nexus listing for nPwka Engine Extension describes a DLL extension with a Hardcore mode, online leaderboard, reserve slots, speed controls, screenshot changes and Lua/modder additions. It does not advertise co-op or player/state synchronization. It requires Crossworlds 1.3.1 (build 6171), supports English and Russian builds, and says public mods depending on or building on its features require the author's permission; private development/testing is allowed. Source: https://www.nexusmods.com/kingsbountycrossworlds/mods/38
@@ -17,7 +17,7 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 
 ## Derived
 
-- No ready-to-use Crossworlds co-op solution surfaced in the searches listed below. The executable has real TCP socket code, but its configured endpoint is explicitly named `debug_server`. The imports and symbols should not be treated as multiplayer until their call paths and message protocol are traced.
+- No ready-to-use Crossworlds co-op solution surfaced in the searches listed below. The executable has a Lua-facing TCP API, but its configured endpoint is explicitly named `debug_server`. That API may be useful as a transport only after its receiver/callback semantics and relationship to the game session are traced; the imports and symbols alone do not prove campaign replication.
 - The same-engine multiplayer games provide a practical comparison target for their client/server startup, state replication and network setup. Their multiplayer modes are not evidence that Crossworlds includes a playable multiplayer menu or shared campaign.
 - The game is a real-time overworld plus turn-based tactical battles; any campaign co-op design must decide turn/control ownership and synchronize hero, battle, quest, inventory, and save state. This is design analysis, not an implementation finding.
 - nPwka Engine Extension may help explain the native hook and script-extension surface, but its published features are not multiplayer. Respect the author's public derivative/dependency restrictions.
@@ -28,7 +28,7 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 
 ## Unknown
 
-- Whether Crossworlds' imported network APIs and server/client classes are active in ordinary gameplay, and whether they can create remote clients in this build.
+- Whether Crossworlds' Lua TCP API can receive messages/callbacks in ordinary gameplay, and whether the debug server or game session can create remote game clients in this build.
 - Whether those classes replicate hero, army, battle, quest and overworld state, or are only generic engine infrastructure.
 - Whether any unpublished, non-default-branch, or private Crossworlds co-op attempt exists.
 - How campaign and combat state are represented, which Lua/native APIs own them, and how save/load interacts with networked clients.
@@ -48,9 +48,10 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 
 ## Next steps
 
-1. Trace the socket call paths to the `debug_server` config and network-related engine symbols in this exact `kb.exe`; determine whether any of them are reachable from the Crossworlds game session and how a client is created.
+1. Trace `NetListen`/`NetConnect` to the `debug_server` config and determine their argument, receive/callback and lifecycle semantics; then check whether any game-session code can create a remote game client.
 2. Compare the exposed script/API and session initialization paths with a same-engine multiplayer game (Fantasy Wars or Elven Legacy) if an authorized local copy is available.
 3. Map campaign save/load, session transitions, and hero/battle state ownership before selecting a network model.
 4. Continue searching project forks, branches, releases, archives, Steam discussions and Russian-language community sources for prior work.
 5. Once a research phase is reviewable, prepare the game write-up/directory change, show the owner the diff, and open a draft PR as required by `AGENTS.md`.
+
 
