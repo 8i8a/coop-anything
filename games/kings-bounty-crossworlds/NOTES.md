@@ -44,7 +44,7 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 - Steam Crossworlds store/community search: store listing says Single-player; general community results did not surface a co-op project.
 - Static PE import/string inspection, a bounded x86 call-site scan for Winsock imports, and a bounded token scan of text-like scripts were run on the owner's isolated Steam copy. No game runtime test has been done, and the socket call paths have not yet been tied to the `debug_server` config or to campaign logic.
 - Research searches for TheEngine sibling games found Fantasy Wars and Elven Legacy, both listed with multiplayer in PCGamingWiki; Elven Legacy LAN/hot-seat is a documented lead, while its online service is shut down.
-- Required claim issue posted: https://github.com/cranebeaker/coop-anything/issues/61. Owner's fork and branch are https://github.com/8i8a/coop-anything/tree/game/kings-bounty-crossworlds. No pull request has been opened yet.
+- Required claim issue posted: https://github.com/cranebeaker/coop-anything/issues/61. Owner's fork and branch are https://github.com/8i8a/coop-anything/tree/game/kings-bounty-crossworlds. Draft pull request opened: https://github.com/cranebeaker/coop-anything/pull/63.
 
 ## Next steps
 
