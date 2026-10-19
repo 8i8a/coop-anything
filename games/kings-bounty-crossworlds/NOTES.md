@@ -53,5 +53,3 @@ Status: research in progress. Static inspection was done on an isolated copy of 
 3. Map campaign save/load, session transitions, and hero/battle state ownership before selecting a network model.
 4. Continue searching project forks, branches, releases, archives, Steam discussions and Russian-language community sources for prior work.
 5. Once a research phase is reviewable, prepare the game write-up/directory change, show the owner the diff, and open a draft PR as required by `AGENTS.md`.
-
-
