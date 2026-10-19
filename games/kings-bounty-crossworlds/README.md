@@ -10,7 +10,7 @@
 
 ## Where things stand
 
-There is no ready-to-use co-op campaign project in the sources searched so far, and the Steam listing describes Crossworlds as single-player. Friends cannot currently join a shared campaign through the stock game or a co-op mod from this research. The executable contains TCP and Lua network APIs, but the only configured endpoint found is named `debug_server`; this is not evidence of a playable multiplayer mode.
+There is no ready-to-use co-op campaign project in the sources searched so far, and the Steam listing describes Crossworlds as single-player. A full co-op mod is **not implemented yet**; this write-up is research and reverse engineering, not a playable build. Friends cannot currently join a shared campaign through the stock game or a co-op mod from this research. The executable contains TCP and Lua network APIs, but the only configured endpoint found is named `debug_server`; this is not evidence of a playable multiplayer mode.
 
 ## Existing work
 
@@ -23,32 +23,32 @@ There is no ready-to-use co-op campaign project in the sources searched so far, 
 
 Crossworlds combines real-time overworld exploration with turn-based tactical battles. The installed Steam copy has script files inside ZIP-readable `.kfs` session archives and includes `LuaIDE.dll`. A bounded search of text-like session scripts did not find network or multiplayer terms.
 
-Static inspection of `kb.exe` found Winsock imports and calls, Lua globals named `NetListen`, `NetConnect`, `NetSend`, and `NetConnected`, and engine server/client symbols. Targeted decompilation also confirmed native TCP `listen`/`accept`, `connect`, `send`, and `recv` paths. The Lua table still exposes no receive callback, and the receive-to-Lua/game-command path has not been traced. The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`. A 30-second hidden launch of the isolated copy with that setting changed to loopback produced no observable listener; the original config was restored after the check. There is still no evidence that the native network layer lets a second player join the campaign or replicates campaign state.
+Static inspection of `kb.exe` found Winsock imports and calls, Lua globals named `NetListen`, `NetConnect`, `NetSend`, and `NetConnected`, and engine server/client symbols. Targeted decompilation also confirmed native TCP `listen`/`accept`, `connect`, `send`, and `recv` paths. The Lua table still exposes no receive callback, and the receive-to-Lua/game-command path has not been traced. The exposed `Logic` hero APIs resolve the current hero from active game state and do not accept a hero/client ID; creating and controlling a separate player hero remains an unsolved implementation step. The inspected `data/app.ini` sets `~debug_server` to `TCP:0.0.0.0:51515`. A 30-second hidden launch of the isolated copy with that setting changed to loopback produced no observable listener; the original config was restored after the check. There is still no evidence that the native network layer lets a second player join the campaign or replicates campaign state.
 
-The release uses TheEngine, also used by Fantasy Wars and Elven Legacy. Their multiplayer modes may help explain the engine networking layer, but no source or matching local multiplayer build was available for comparison.
+The release uses TheEngine, also used by Fantasy Wars and Elven Legacy. Contemporary coverage describes LAN, Internet and hot-seat multiplayer in Elven Legacy, and Fantasy Wars is documented with direct-IP multiplayer. These are useful comparison targets, but no source or matching local multiplayer build has been examined yet. They do not establish that Crossworlds can use the same session protocol.
 
 ## What we changed
 
-Research notes only. No game files were modified, no mod was installed, and no code or game assets were committed.
+Reverse-engineering notes and a private smoke test of a minimal `dinput8.dll` proxy in the isolated test copy. The proxy loaded and forwarded DirectInput to Windows, but it does not hook game state or implement networking. No co-op code or game assets were committed.
 
 ## QA
 
 No co-op client or gameplay test exists yet. The QA level is `none`.
 
-## How to play
+## Temporary shared-control workaround (not co-op)
 
-There is no native co-op package to install, host, or join. For shared play now, use Parsec as a one-copy, shared-control workaround:
+There is no co-op package to install, host, or join. If friends want to take turns in one running copy while development continues, Parsec can share keyboard and mouse input:
 
 1. The host starts King's Bounty: Crossworlds on a Windows PC and shares the computer in Parsec.
 2. Friends connect to the host. By default, Parsec guests get gamepad access; the host must explicitly grant keyboard and mouse control for this mouse-driven game.
 3. Everyone plays the same running copy, hero, and save. Take turns moving and making battle decisions; this does not add separate heroes, networked game state, or independent saves.
 
-This is screen/input sharing, not a tested game co-op mode. Parsec's current [Hosting and Permissions guide](https://support.parsec.app/hc/en-us/articles/32381747079572-Hosting-and-Permissions) describes hosting a Windows PC, inviting guests, and granting keyboard/mouse permissions. Do not expose the configured `debug_server` port as a multiplayer workaround; its protocol and purpose have not been audited.
+This workaround is not the requested co-op: everyone shares one hero, one save and one game process; players cannot join as separate network participants. It has not been tested as part of this project. Parsec's current [Hosting and Permissions guide](https://support.parsec.app/hc/en-us/articles/32381747079572-Hosting-and-Permissions) describes hosting a Windows PC, inviting guests, and granting keyboard/mouse permissions. Do not expose the configured `debug_server` port as a multiplayer workaround; its protocol and purpose have not been audited.
 
 ## Known issues
 
-The game has no confirmed shared campaign, player joining, synchronized battles, or shared save support. The presence of TCP symbols alone does not provide those features.
+The game has no confirmed shared campaign, player joining, synchronized battles, or shared save support. The presence of TCP symbols alone does not provide those features. There is no playable co-op mod or automated co-op QA result yet.
 
 ## Next steps
 
-Continue reverse engineering the Lua TCP API and its relationship to the `debug_server` configuration, then compare with a same-engine multiplayer game if an authorized install is available. Map campaign state and save/load before choosing a co-op design. Track findings in [NOTES.md](NOTES.md) and [issue #61](https://github.com/cranebeaker/coop-anything/issues/61).
+Trace the native receive callback into engine events and game commands; compare its client/server/session behavior against a same-engine multiplayer build; map campaign and battle state plus save/load; then implement a host-authoritative shared campaign and a two-client bot test before calling any co-op feature playable. Track findings in [NOTES.md](NOTES.md) and [issue #61](https://github.com/cranebeaker/coop-anything/issues/61).
