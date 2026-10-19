@@ -46,4 +46,3 @@ The game has no confirmed shared campaign, player joining, synchronized battles,
 ## Next steps
 
 Continue reverse engineering the Lua TCP API and its relationship to the `debug_server` configuration, then compare with a same-engine multiplayer game if an authorized install is available. Map campaign state and save/load before choosing a co-op design. Track findings in [NOTES.md](NOTES.md) and [issue #61](https://github.com/cranebeaker/coop-anything/issues/61).
-
