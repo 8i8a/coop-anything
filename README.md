@@ -36,7 +36,6 @@ From the community: **[Mega Man X](https://github.com/mstan/MegaManXSNESRecomp)*
 **[Clive Barker's Jericho](https://github.com/dolbaras/jericho-coop)** · **[Poppy Playtime](https://github.com/romannazarov057-spec/PoppyCoop)** ·
 **[Divinity II](games/divinity-2-developers-cut)** (split-screen) · **[Command & Conquer 3](games/command-and-conquer-3)** (campaign co-op) ·
 **[Far Cry 2](https://github.com/MortyRei/fc2-coop-probe)** · yours next?
-Community tools: **[DecompPipeline](https://github.com/GeneralAtrox/DecompPipeline)** (agent-driven decompilation of console games, Dreamcast first).
 
 ## Quick start
 
