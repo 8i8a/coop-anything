@@ -240,6 +240,12 @@
 | Vampire: The Masquerade - Redemption | 2000 | Nihilistic Zorro engine | [The Age of Redemption](https://www.gamebanshee.com/kdc6r) | mod | playable | story: yes, enemies: unknown, world state: unknown, items: unknown | unknown | vpn-needed | player reports | unknown |
 | Yakuza 0 | 2015 | unknown | [Yakuza 0 DC Co-op (Jhrino)](https://www.nexusmods.com/yakuza0/mods/1276) | mod | playable | story: True, enemies: True, world state: unknown, items: unknown | 2-4 | lan | player reports | unknown |
 
+## Up for adoption
+
+Unfinished co-op projects whose authors have stopped working on them and would like someone to carry on. Pick one up, fork it, and open a claim issue so others know.
+
+None yet. Handing off your own mod? See [AGENTS.md](AGENTS.md#handing-off-an-unfinished-mod).
+
 ## Open gaps
 
 Loved single-player games where no co-op project was found. Searched sources are in the YAML. If you find one, replace the gap entry with a real one.
